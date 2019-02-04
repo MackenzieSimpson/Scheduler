@@ -1,5 +1,9 @@
-// Test and Project Database.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// File Name:		Test and Project Database.cpp
+// Author:			Mackenzie Simpson
+// Email Address:	mcsimpson@my.milligan.edu
+// Assignment:		Term Project
+// Description:		Program to manage assignments due
+// Last Changed:	February 4, 2019
 
 #include "pch.h"
 #include <iostream>
