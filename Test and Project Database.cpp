@@ -1,6 +1,6 @@
 // Test and Project Database.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
+// Get rid of pch.h for now
 #include "pch.h"
 #include <iostream>
 #include <string>
@@ -31,6 +31,7 @@ int main()
 	
 
 	cout << "Enter Professor's Name:\n";
+	// cin is fine
 
 	getline(cin, Professor);
 
@@ -42,6 +43,7 @@ int main()
 	
 
 	cout << "What date would you like " << Assignment << " to be on?\n";
+	// Let's tall about what you are doing here
 
 	cin >> first_date_month; // read the month
 	if (std::cin.get() != '/') // make sure there is a slash between MM and DD
@@ -105,7 +107,7 @@ int main()
 		const int daysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 		const int daysInMonthLeap[] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-
+		// You could do your calculations berfore you store the values and have just one.
 		jdate = (first_date_year - 1900) * 365 + daysInYear[first_date_month] + first_date_days;
 		jdate2 = (second_date_year - 1900) * 365 + daysInYear[second_date_month] + second_date_days;
 
