@@ -5,6 +5,16 @@
 // Description:		Program to manage assignment dates
 // Last Changed:	February 4, 2019
 
+/*
++ Utilize an if statement and 
++ Utilize a multi-level if and/or a while statement.
++ Be properly indented.
++ Has a header comment.
++ Have comments for non-obvious operations.
++ Utilizes a named constant.
++ Utilizes an array.
+*/
+// Get rid of variables you are not using
 #include "pch.h"
 #include <iostream>
 #include <string>
@@ -32,14 +42,14 @@ int main()
 
 	int month_days[] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
 
-	// Professor inputs his name, name of the assignment, and date of the assignment.//
+	// Professor inputs his/her name, name of the assignment, and date of the assignment.//
 
 		cout << "Enter Professor's Name:\n";
 		getline(cin, Professor);
 
 		cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
 		getline(cin, Assignment);
-	
+	// Let user know what format you are looking for - MM/DD/YYYY
 		cout << "What date would you like " << Assignment << " to be on?\n"; //Echo Assignment Name//
 		cin >> first_date_month; // read the month
 			if (std::cin.get() != '/') // make sure there is a slash between MM and DD
@@ -91,14 +101,14 @@ int main()
 
 		{
 
-			int difference;
+			int difference; //Make all these variables global by moving up
 			int month, month2, day, day2, year, year2, jdate, jdate2, diff;
 			const int daysInYear[] = { 0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365 };
 			const int daysInLeapYear[] = { 0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366 };
 			const int daysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 			const int daysInMonthLeap[] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-
+			// Reduce indentation
 				jdate = (first_date_year - 1900) * 365 + daysInYear[first_date_month] + first_date_days;// Assignemtn Date Professor inputted//
 				jdate2 = (second_date_year - 1900) * 365 + daysInYear[second_date_month] + second_date_days;// Current Date inputted//
 
