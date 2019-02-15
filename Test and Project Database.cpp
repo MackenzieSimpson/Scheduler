@@ -3,7 +3,7 @@
 // Email Address:	mcsimpson@my.milligan.edu
 // Assignment:		Term Project
 // Description:		Program to manage assignment dates
-// Last Changed:	February 14, 2019
+// Last Changed:	February 15, 2019
 
 #include "pch.h"
 #include <iostream>
@@ -25,11 +25,8 @@ int main()
 	int first_date_month;
 	int first_date_days;
 	int first_date_year;
-	int second_date_month;
-	int second_date_days;
-	int second_date_year;
 	int difference;
-	int month, month2, day, day2, year, year2, jdate, jdate2, diff;
+	int jdate, jdate2;
 	const int daysInYear[] = { 0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365 };
 	const int daysInLeapYear[] = { 0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366 };
 	const int daysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
