@@ -3,13 +3,16 @@
 // Email Address:	mcsimpson@my.milligan.edu
 // Assignment:		Term Project
 // Description:		Program to manage assignment dates
-// Last Changed:	February 8, 2019
+// Last Changed:	February 14, 2019
 
 #include "pch.h"
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <cmath>
+#include <stdio.h>
+#include <time.h>
+
 
 using namespace std;
 
@@ -33,88 +36,121 @@ int main()
 	const int daysInMonthLeap[] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	
 
-	// Professor inputs his name, name of the assignment, and date of the assignment.//
+	int choice;
 
-	cout << "Enter Professor's Name:\n";
-	cin >> Professor;
 
-	cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
-	cin >> Assignment ;
-	
-	cout << "What date would you like " << Assignment << " to be on?\n"; //Echo Assignment Name//
-	cin >> first_date_month; // read the month
-		if (std::cin.get() != '/') // make sure there is a slash between MM and DD
-		{
-			std::cout << "expected /\n";
-			return 1;
-		}
-			std::cin >> first_date_days; // read the day
-		if (std::cin.get() != '/') // make sure there is a slash between DD and YYYY
-		{
-			std::cout << "expected /\n";
-			return 1;
-		}
-			std::cin >> first_date_year; // read the year
-	cout << "input date: " << first_date_month << "/" << first_date_days << "/" << first_date_year << "\n";
-		
-	cout << "Enter the current date.\n";
-	cin >> second_date_month; // read the month
-		if (std::cin.get() != '/') // make sure there is a slash between MM and DD
-		{
-			std::cout << "expected /\n";
-			return 1;
-		}
-			std::cin >> second_date_days; // read the day
 
-		if (std::cin.get() != '/') // make sure there is a slash between DD and YYYY
-		{
-			std::cout << "expected /\n";
-			return 1;
-		}
-			std::cin >> second_date_year; // read the year
-
-	cout << "input date: " << second_date_month << "/" << second_date_days << "/" << second_date_year << "\n";
-			
-	if (first_date_days == second_date_days)// make sure that the dates are not the same //
+	cout << "Choose 1 to input date and assignment. \n";
+	cout << "Choose 2 to look at assignment log.\n";
+	cout << "Choose 3 to exit the program.\n";
+	cout << "Enter your choice and press return.\n";
+	cin >> choice;
+	{if (choice >= 1 && choice <= 3)
 	{
-		cout << "Sorry, the date you entered is not avaliable.\n";
-			
-			if (true)
+		switch (choice)
+
+		{
+		case 1: {
+			// Professor inputs his/her name, name of the assignment, and date of the assignment.//
+
+			cout << "Enter Professor's Name.\n";
+			cin >> Professor;
+
+			cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
+			cin >> Assignment;
+
+			cout << "What date would you like " << Assignment << " to be on?\n"; //Echo Assignment Name//
+			//Put date in DD/MM/YYYY format//
+			cin >> first_date_month; // read the month
+			if (std::cin.get() != '/') // make sure there is a slash between MM and DD
 			{
-				cout << "Please restart the program and enter an alternate date. \n";
+				std::cout << "expected /\n";
+				return 1;
 			}
+			std::cin >> first_date_days; // read the day
+			if (std::cin.get() != '/') // make sure there is a slash between DD and YYYY
+			{
+				std::cout << "expected /\n";
+				return 1;
+			}
+			std::cin >> first_date_year; // read the year
+			
+			
+			
+			time_t current_time;
+			struct tm  local_time;
+
+			time(&current_time);
+			localtime_s(&local_time, &current_time);
+
+			int Year = local_time.tm_year + 1900;
+			int Month = local_time.tm_mon + 1;
+			int Day = local_time.tm_mday;
+
+			int Hour = local_time.tm_hour;
+			int Min = local_time.tm_min;
+			int Sec = local_time.tm_sec;
+
+			if (first_date_days == Day)// make sure that the dates are not the same //
+			{
+				cout << "Sorry, the date you entered is not avaliable.\n";
+
+				if (true)
+				{
+					cout << "Please restart the program and enter an alternate date. \n";
+				}
+			}
+			else
+			{
+				cout << "The date you entered is avaliable.\n"; // assignment is stored in text file //
+
+				cout << Assignment << " is scheduled for " << first_date_month << "/" << first_date_days << "/" << first_date_year << ", thank you.\n";
+
+
+
+				// computing the days in between the inputted dates //
+				jdate = (first_date_year - 1900) * 365 + daysInYear[first_date_month] + first_date_days;// Assignment Date Professor inputted//
+				jdate2 = (Year- 1900) * 365 + daysInYear[Month] + Day;// Current Date inputted//
+				difference = abs(jdate - jdate2);// Number of days in between//
+
+				cout << "The number of days between these dates is: " << difference << endl;
+				ofstream mfile;
+				mfile.open("data.txt");
+				mfile << first_date_month << "/" << first_date_days << "/" << first_date_year << endl;
+				break;
+			}
+		}
+		case 2: { 
+			string line;
+			ifstream myfile("data.txt");
+			if (myfile.is_open())
+			{
+
+				while (getline(myfile, line)) {
+					cout << "There is an assignment scheduled for "<< line << "." << endl;
+				}
+				myfile.close();
+			}
+
+			else cout << "Unable to open file";
+
+		}
+				break;
+
+
+		case 3: {
+		} cout << "Please hit the red x to exit the program.\n";
+				break;
+
+
+		}
 	}
 	else
 	{
-		cout << "The date you entered is avaliable.\n"; // assignment is stored in text file //
-
-		cout << Assignment << " is scheduled for " << first_date_month << "/" << first_date_days << "/" << first_date_year << ", thank you.\n";
-			
-		ofstream mfile;
-		mfile.open("data.txt");
-		mfile << Professor << "'s " << Assignment << " is scheduled for " << first_date_month << "/" << first_date_days << "/" << first_date_year;
-
-		// computing the days in between the inputted dates //
-		jdate = (first_date_year - 1900) * 365 + daysInYear[first_date_month] + first_date_days;// Assignment Date Professor inputted//
-		jdate2 = (second_date_year - 1900) * 365 + daysInYear[second_date_month] + second_date_days;// Current Date inputted//
-		difference = abs(jdate - jdate2);// Number of days in between//
-
-		cout << "The number of days between these dates is: " << difference << endl;
+		cout << "The choice entered is not an option on the menu, please exit the program and enter 1,2, or 3.\n";
+	}
 	}
 
-		
-		
-			
-		
-		
-		
-		
-	
-
-
-	
-
-	
 	
 
 
@@ -126,20 +162,6 @@ int main()
 
 
 
-	
-
-
-
-
-
-
-	
-
-
-
-
-
-	
 
 
 
@@ -148,15 +170,50 @@ int main()
 
 
 
-	
-	
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 		return 0;
 
-
+	
 
 }
 
