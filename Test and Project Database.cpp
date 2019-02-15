@@ -120,7 +120,8 @@ int main()
 				break;
 			}
 		}
-		case 2: { 
+		case 2: 
+			{ 
 			string line;
 			ifstream myfile("data.txt");
 			if (myfile.is_open())
@@ -134,9 +135,8 @@ int main()
 
 			else cout << "Unable to open file";
 
-		}
-				break;
-
+			}
+			break;
 
 		case 3: {
 		} cout << "Please hit the red x to exit the program.\n";
@@ -152,65 +152,6 @@ int main()
 	}
 
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		return 0;
 
 	
