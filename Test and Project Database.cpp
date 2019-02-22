@@ -11,10 +11,20 @@
 #include <fstream>
 #include <cmath>
 #include <stdio.h>
-#include <time.h>
+#include <ctime>
+
 
 
 using namespace std;
+
+double timeConverter(int monthVal, int dayVal, int yearVal);
+// Precondition: User inputs dates In D M YYYY form.
+// Postcondition: how many seconds from jan 1 1970 to date inputed.
+double classID(string Professor, string Assignment);
+// Precondition: User will input his/her name.
+// Postcondition: User will know what class/subject they are putting the assignment in for.
+
+
 
 int main()
 
@@ -32,6 +42,15 @@ int main()
 	const int daysInLeapYear[] = { 0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366 };
 	const int daysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	const int daysInMonthLeap[] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	int yearVal;
+	int monthVal;
+	int dayVal;
+	double wantedTime;
+	double currentTime;
+	double timeDifference;
+	double AssignmentDate;
+	int Giesey;
+	int Harrell;
 	
 
 	int choice;
@@ -57,14 +76,53 @@ int main()
 			
 			cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
 			getline(cin, Professor);
-			//Precondition: You must input a single name without a space in order to run this function.//
-			//Postcondition: String is where the word entered is stored.  The contents in the string before the call are discarded if any.//
+			
 			getline(cin, Assignment);
-			//Precondition: You must input a single name without a space in order to run this function.//
-			//Postcondition: String is where the word entered is stored.  The contents in the string before the call are discarded if any.//
+			
 			
 			cout << "What date would you like " << Assignment << " to be on?\n"; //Echo Assignment Name//
-			cout << "Put date in DD / MM / YYYY format." << endl;
+			//date format converter
+
+			
+			cin >> monthVal;
+
+			while ((monthVal < 1) || (monthVal > 12))
+			{
+				cout << "month input must be from 1 to 12.\n";
+				cin >> monthVal;
+			}
+
+			cin >> dayVal;
+
+			while ((dayVal < 1) || (dayVal > 31))
+			{
+				cout << "day input must be from 1 to 31.\n";
+				cin >> dayVal;
+			}
+
+			cin >> yearVal;
+
+			while ((yearVal < 2019) || (monthVal > 2099))
+			{
+				cout << "year input must be from 2019 to 2099.\n";
+				cin >> yearVal;
+			}
+
+			cout << "you have selected " << monthVal << ", " << dayVal << ", " << yearVal << "\n";
+			AssignmentDate= timeConverter(monthVal, dayVal, yearVal);
+
+
+			cout << "you selected an assignment date for.\n" << AssignmentDate;
+			
+			time_t(currentTime);
+			currentTime = time(NULL);
+			cout << currentTime << " seconds has passed since 00:00:00 GMT, Jan 1, 1970\n";
+
+
+			timeDifference = AssignmentDate-currentTime;
+			cout << "Time until assignment is " << timeDifference << "\n";
+			
+			/*cout << "Put date in DD / MM / YYYY format." << endl;
 			cin >> first_date_month; // read the month
 			if (std::cin.get() != '/') // make sure there is a slash between MM and DD
 			{
@@ -77,28 +135,30 @@ int main()
 				std::cout << "expected /\n";
 				return 1;
 			}
-			std::cin >> first_date_year; // read the year
+			std::cin >> first_date_year; // read the year*/
 			
 			
 			
 			
-			time_t current_time;
+			/*time_t current_time;
 			struct tm  local_time;
 			time(&current_time);
 			localtime_s(&local_time, &current_time); 
-			//Preconditon:  Must have #include <time.h> at the top to run this function. 
-			//Post Condtion: Local Date/Time will be used to insure that the date of assignment is not the same as the current date.//
-
+			
 			int Year = local_time.tm_year + 1900;
 			int Month = local_time.tm_mon + 1;
 			int Day = local_time.tm_mday;
 
 			int Hour = local_time.tm_hour;
 			int Min = local_time.tm_min;
-			int Sec = local_time.tm_sec;
+			int Sec = local_time.tm_sec;*/
+			// telling current time
+			
 			
 
-			if (first_date_days == Day)// make sure that the dates are not the same //
+			
+
+			if (currentTime== dayVal)// make sure that the dates are not the same //
 			{
 				cout << "Sorry, the date you entered is not avaliable.\n";
 
@@ -111,12 +171,12 @@ int main()
 			{
 				cout << "The date you entered is avaliable.\n"; // assignment is stored in text file //
 
-				cout << Assignment << " is scheduled for " << first_date_month << "/" << first_date_days << "/" << first_date_year << ", thank you.\n";
+				//cout << Assignment << " is scheduled for " << first_date_month << "/" << first_date_days << "/" << first_date_year << ", thank you.\n";//
 
 
 
 				// computing the days in between the inputted dates //
-				jdate = (first_date_year - 1900) * 365 + daysInYear[first_date_month] + first_date_days;// Assignment Date Professor inputted//
+				/*jdate = (first_date_year - 1900) * 365 + daysInYear[first_date_month] + first_date_days;// Assignment Date Professor inputted//
 				jdate2 = (Year- 1900) * 365 + daysInYear[Month] + Day;// Current Date inputted//
 				difference = abs(jdate - jdate2);// Number of days in between//
 				cout << "The number of days between these dates is: " << difference << endl;
@@ -124,7 +184,7 @@ int main()
 				mfile.open("data.txt");
 				//Precondition:  Date must be in DD/MM/YYYY format without slashes in between and must not already be taken or be the current date.//
 				//Postcondition:  The date entered is stored into a text file.// 
-				mfile << first_date_month << "/" << first_date_days << "/" << first_date_year << endl;
+				mfile << first_date_month << "/" << first_date_days << "/" << first_date_year << endl;*/
 				
 				break;
 			}
@@ -136,16 +196,13 @@ int main()
 			ifstream myfile("data.txt");
 			
 			if (myfile.is_open())
-			//Precondition:  There must be a date stored in the text file.//
-			//Postcondition:  The file will open and print across the screen when requested.//
 			{
 
 				while (getline(myfile, line)) {
 					cout << "There is an assignment scheduled for "<< line << "." << endl;
 				}
 				myfile.close();
-			//Precondition:  The date must be printed across the screen.//
-			//Postcondition:  The file will close.//
+
 			}
 
 			else cout << "Unable to open file";
@@ -176,6 +233,27 @@ int main()
 	
 
 }
+double timeConverter(int monthVal, int dayVal, int yearVal)
+{
+
+	double timeFormat;
+	int daysOfMonth[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	timeFormat = (yearVal - 1970) * 365;
+	timeFormat += (yearVal - 1970) / 4;
+	for (int i = 0; i < monthVal - 1; i++)
+	{
+		timeFormat += daysOfMonth[i];
+	}
+	timeFormat += dayVal - 1;
+	timeFormat = timeFormat * 24 * 60 * 60;
+	cout << timeFormat;
+	return(timeFormat);
+}
+
+
+
+
+
 
 
 
