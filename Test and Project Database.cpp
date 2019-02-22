@@ -52,16 +52,13 @@ int main()
 		case 1: {
 
 			// Professor inputs his/her name, name of the assignment, and date of the assignment.//
-
-
-
 			cout << "Enter Professor's Name.\n";
-		
+			cin >> Professor;
+			
+			cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
 			getline(cin, Professor);
 			//Precondition: You must input a single name without a space in order to run this function.//
 			//Postcondition: String is where the word entered is stored.  The contents in the string before the call are discarded if any.//
-
-			cout << "Hello " << Professor << " what is the name of your next assignment(s)?\n";// Echo Professor's Name//
 			getline(cin, Assignment);
 			//Precondition: You must input a single name without a space in order to run this function.//
 			//Postcondition: String is where the word entered is stored.  The contents in the string before the call are discarded if any.//
@@ -125,8 +122,10 @@ int main()
 				cout << "The number of days between these dates is: " << difference << endl;
 				ofstream mfile;
 				mfile.open("data.txt");
+				//Precondition:  Date must be in DD/MM/YYYY format without slashes in between and must not already be taken or be the current date.//
+				//Postcondition:  The date entered is stored into a text file.// 
 				mfile << first_date_month << "/" << first_date_days << "/" << first_date_year << endl;
-
+				
 				break;
 			}
 		}
@@ -135,27 +134,34 @@ int main()
 			{ 
 			string line;
 			ifstream myfile("data.txt");
+			
 			if (myfile.is_open())
+			//Precondition:  There must be a date stored in the text file.//
+			//Postcondition:  The file will open and print across the screen when requested.//
 			{
 
 				while (getline(myfile, line)) {
 					cout << "There is an assignment scheduled for "<< line << "." << endl;
 				}
 				myfile.close();
+			//Precondition:  The date must be printed across the screen.//
+			//Postcondition:  The file will close.//
 			}
 
 			else cout << "Unable to open file";
 
 			}
-
+			return 0;
 			break;
 
 		case 3: {
 		} cout << "Please hit the red x to exit the program.\n";
-				break;
+			return 0;
+			break;
 
 
 		}
+	
 	}
 	while (choice != 1 || choice != 2 || choice != 3);
 	
