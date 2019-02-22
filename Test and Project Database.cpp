@@ -3,7 +3,7 @@
 // Email Address:	mcsimpson@my.milligan.edu
 // Assignment:		Term Project
 // Description:		Program to manage assignment dates
-// Last Changed:	February 15, 2019
+// Last Changed:	February 22, 2019
 
 #include "pch.h"
 #include <iostream>
@@ -22,6 +22,7 @@ int main()
 	string date;
 	string Professor;
 	string Assignment;
+	string Answer;
 	int first_date_month;
 	int first_date_days;
 	int first_date_year;
@@ -43,21 +44,30 @@ int main()
 	cout << "Enter your choice and press return.\n";
 	cin >> choice;
 	{if (choice >= 1 && choice <= 3)
+		do
 	{
 		switch (choice)
 
 		{
 		case 1: {
+
 			// Professor inputs his/her name, name of the assignment, and date of the assignment.//
 
+
+
 			cout << "Enter Professor's Name.\n";
-			cin >> Professor;
+		
+			getline(cin, Professor);
+			//Precondition: You must input a single name without a space in order to run this function.//
+			//Postcondition: String is where the word entered is stored.  The contents in the string before the call are discarded if any.//
 
-			cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
-			cin >> Assignment;
-
+			cout << "Hello " << Professor << " what is the name of your next assignment(s)?\n";// Echo Professor's Name//
+			getline(cin, Assignment);
+			//Precondition: You must input a single name without a space in order to run this function.//
+			//Postcondition: String is where the word entered is stored.  The contents in the string before the call are discarded if any.//
+			
 			cout << "What date would you like " << Assignment << " to be on?\n"; //Echo Assignment Name//
-			//Put date in DD/MM/YYYY format//
+			cout << "Put date in DD / MM / YYYY format." << endl;
 			cin >> first_date_month; // read the month
 			if (std::cin.get() != '/') // make sure there is a slash between MM and DD
 			{
@@ -74,11 +84,13 @@ int main()
 			
 			
 			
+			
 			time_t current_time;
 			struct tm  local_time;
-
 			time(&current_time);
-			localtime_s(&local_time, &current_time);
+			localtime_s(&local_time, &current_time); 
+			//Preconditon:  Must have #include <time.h> at the top to run this function. 
+			//Post Condtion: Local Date/Time will be used to insure that the date of assignment is not the same as the current date.//
 
 			int Year = local_time.tm_year + 1900;
 			int Month = local_time.tm_mon + 1;
@@ -87,6 +99,7 @@ int main()
 			int Hour = local_time.tm_hour;
 			int Min = local_time.tm_min;
 			int Sec = local_time.tm_sec;
+			
 
 			if (first_date_days == Day)// make sure that the dates are not the same //
 			{
@@ -109,14 +122,15 @@ int main()
 				jdate = (first_date_year - 1900) * 365 + daysInYear[first_date_month] + first_date_days;// Assignment Date Professor inputted//
 				jdate2 = (Year- 1900) * 365 + daysInYear[Month] + Day;// Current Date inputted//
 				difference = abs(jdate - jdate2);// Number of days in between//
-
 				cout << "The number of days between these dates is: " << difference << endl;
 				ofstream mfile;
 				mfile.open("data.txt");
 				mfile << first_date_month << "/" << first_date_days << "/" << first_date_year << endl;
+
 				break;
 			}
 		}
+
 		case 2: 
 			{ 
 			string line;
@@ -133,6 +147,7 @@ int main()
 			else cout << "Unable to open file";
 
 			}
+
 			break;
 
 		case 3: {
@@ -142,7 +157,8 @@ int main()
 
 		}
 	}
-	else
+	while (choice != 1 || choice != 2 || choice != 3);
+	
 	{
 		cout << "The choice entered is not an option on the menu, please exit the program and enter 1,2, or 3.\n";
 	}
