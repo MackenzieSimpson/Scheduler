@@ -20,7 +20,7 @@ using namespace std;
 double timeConverter(int monthVal, int dayVal, int yearVal);
 // Precondition: User inputs dates In D M YYYY form.
 // Postcondition: how many seconds from jan 1 1970 to date inputed.
-double classID(string Professor, string Assignment);
+double ID(string Professor, string Assignment);
 // Precondition: User will input his/her name.
 // Postcondition: User will know what class/subject they are putting the assignment in for.
 
@@ -186,6 +186,7 @@ int main()
 				//Postcondition:  The date entered is stored into a text file.// 
 				mfile << first_date_month << "/" << first_date_days << "/" << first_date_year << endl;*/
 				
+				
 				break;
 			}
 		}
@@ -249,6 +250,24 @@ double timeConverter(int monthVal, int dayVal, int yearVal)
 	cout << timeFormat;
 	return(timeFormat);
 }
+
+double ID(string Professor, string Assignment);
+{
+	int Giesey
+	int Harrell
+		if (Professor = Giesey)
+		{
+			cout << "This is an Electrical Assignment.\n"
+
+		}
+		else
+		{
+			cout<< "This is a Mechanical Assignment.\n"
+		}
+
+}
+
+
 
 
 
