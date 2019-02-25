@@ -20,7 +20,7 @@ using namespace std;
 double timeConverter(int monthVal, int dayVal, int yearVal);
 // Precondition: User inputs dates In D M YYYY form.
 // Postcondition: how many seconds from jan 1 1970 to date inputed.
-double ID(string Professor, string Assignment);
+char ID(int Giesey, string Assignment, int Mechanical, int Electrical);
 // Precondition: User will input his/her name.
 // Postcondition: User will know what class/subject they are putting the assignment in for.
 
@@ -30,7 +30,7 @@ int main()
 
 {
 	string date;
-	string Professor;
+	int Professor;
 	string Assignment;
 	string Answer;
 	int first_date_month;
@@ -51,6 +51,9 @@ int main()
 	double AssignmentDate;
 	int Giesey;
 	int Harrell;
+	int course;
+	int Electrical;
+	int Mechanical;
 	
 
 	int choice;
@@ -71,13 +74,17 @@ int main()
 		case 1: {
 
 			// Professor inputs his/her name, name of the assignment, and date of the assignment.//
-			cout << "Enter Professor's Name.\n";
-			cin >> Professor;
+			cout << "Enter Professor's Name, Please put Giesey or Harrell and Electrical or Mechanical.\n";
+			cin >> Giesey >> Electrical >> Mechanical;
 			
-			cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
-			getline(cin, Professor);
+			cout << "Hello " << Giesey << " what is the name of your next assignment?\n";// Echo Professor's Name//
+			cin >> Giesey;
 			
 			getline(cin, Assignment);
+			 
+			course=ID(Giesey, Assignment, Mechanical,Electrical);
+			cout << course;
+			
 			
 			
 			cout << "What date would you like " << Assignment << " to be on?\n"; //Echo Assignment Name//
@@ -251,19 +258,21 @@ double timeConverter(int monthVal, int dayVal, int yearVal)
 	return(timeFormat);
 }
 
-double ID(string Professor, string Assignment);
+char ID(int Giesey, string Assignment, int Mechanical, int Electrical)
 {
-	int Giesey
-	int Harrell
-		if (Professor = Giesey)
+	
+		
+
+		if (Giesey)
 		{
-			cout << "This is an Electrical Assignment.\n"
+			return (Electrical);
 
 		}
-		else
+		else 
 		{
-			cout<< "This is a Mechanical Assignment.\n"
+			return (Mechanical);
 		}
+		
 
 }
 
