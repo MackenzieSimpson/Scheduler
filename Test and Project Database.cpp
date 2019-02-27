@@ -23,8 +23,13 @@ double timeConverter(int monthVal, int dayVal, int yearVal);
 char ID(int Giesey, string Assignment, int Mechanical, int Electrical);
 // Precondition: User will input his/her name.
 // Postcondition: User will know what class/subject they are putting the assignment in for.
-
-
+// +Predefined function
+//+User-defienced function
+//~Pre and post-conditions
+// Make constants global
+// Please eliminate unused code from versions you submit for Project Milestones
+// Clarify type on input needed integer or character
+// Not clear as to how ID functions from preconditions/postconditions
 
 int main()
 
