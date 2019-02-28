@@ -20,12 +20,12 @@ using namespace std;
 double datetoseconds(int monthVal, int dayVal, int yearVal);
 // Precondition: User inputs dates In mm dd yyyy form.
 // Postcondition: Returns how many seconds from jan 1 1970 to 12:00 am date inputed.
-void listPrint(int monthVal [], int dayVal[], int yearVal[], int SizeArray);
-//Precondition: The values of the data for different assignments are passed SArray1, IArray1, OArray, XArray,and FArray. 
+void listPrint(int monthValA[], int dayValA[], int yearValA[], int SizeArray);
+//Precondition: The values of the data for different assignments are passed monthVal[], dayVal[], yearVal[]. 
 //				The size is passed in ArraySize.
 //Postcondition: The values of the three arrays will be output to console seperated by tabs in order.
 
-void listPrint(char ProfessorName[], string date[], char AssignmentName[], int SizeArray);
+void listPrint(string ProfessorName[], string AssignmentName[], int SizeArray);
 //Precondition: Char Professor names are passed Professor.
 //              Dates for each assignments are passed through date.
 //              Assignments are passed through Assignment. 
@@ -34,19 +34,16 @@ void listPrint(char ProfessorName[], string date[], char AssignmentName[], int S
 
 
 
-const int SizeArray = 10;
+const int SizeArray = 5;
 int main()
 
 {
-	
-	string Answer;
-	const int daysInYear[] = { 0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365 };
-	const int daysInLeapYear[] = { 0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366 };
-	const int daysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	const int daysInMonthLeap[] = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	int yearVal;
-	int monthVal;
 	int dayVal;
+	int monthVal;
+	int yearVal;
+	int yearValA[] = { 2019, 2019, 2019, 2019, 2019 };
+	int monthValA[] = { 3,3,3,3,3 };
+	int dayValA[] = { 1,2,3,4,5 };
 	double wantedTime;
 	double currentTime;
 	double timeDifference;
@@ -58,19 +55,17 @@ int main()
 	int Bao;
 	int Test;
 	int Quiz;
-	string date;
 	int Project;
 	int Homework;
 	//string date[SizeArray] = { {1, 3, 2019},{2, 3,2019},{3, 3, 2019},{4, 3, 2019},{5, 3, 2019} };//
-	char ProfessorName[SizeArray] = { Giesey,Harrell,Hampton, Holbrook, Bao };
-	char AssignmentName[SizeArray] = { Test, Quiz, Project, Homework };
+	string ProfessorName[SizeArray] = { "Dr. Giesey","Dr. Harrell", "Dr. Hampton", "Dr. Holbrook", "Dr. Bao" };
+	string AssignmentName[SizeArray] = { "Test", "Quiz", "Project", "Homework", "Lab" };
 	string Professor;
 	string Assignment;
-	
-	
-	
-
 	int choice;
+cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(2);
 
 
 
@@ -193,7 +188,7 @@ int main()
 			{
 				cout << "The date you entered is avaliable.\n"; // assignment is stored in text file //
 
-				//cout << Assignment << " is scheduled for " << first_date_month << "/" << first_date_days << "/" << first_date_year << ", thank you.\n";//
+				cout << Assignment << " is scheduled for " << monthVal<< "/" << dayVal << "/" << yearVal << ", thank you.\n";//
 
 
 
@@ -202,22 +197,22 @@ int main()
 				jdate2 = (Year- 1900) * 365 + daysInYear[Month] + Day;// Current Date inputted//
 				difference = abs(jdate - jdate2);// Number of days in between//
 				cout << "The number of days between these dates is: " << difference << endl;*/
-				ofstream mfile;
+				/*ofstream mfile;
 				mfile.open("data.txt");
 				//Precondition:  Date must be in DD/MM/YYYY format without slashes in between and must not already be taken or be the current date.//
 				//Postcondition:  The date entered is stored into a text file.// 
-				mfile << monthVal << "/" << dayVal << "/" << yearVal << endl;
+				mfile << monthVal << "/" << dayVal << "/" << yearVal << endl;*/
 				
-				listPrint(ProfessorName, date, Assignment, SizeArray);
+				listPrint(ProfessorName, AssignmentName, SizeArray);
 				cout << endl;
-				listPrint(monthVal, dayVal, yearVal, SizeArray);
+				
 					break;
 			}
 		}
 
 		case 2: 
 			{ 
-			string line;
+			/*string line;
 			ifstream myfile("data.txt");
 			
 			if (myfile.is_open())
@@ -230,9 +225,10 @@ int main()
 
 			}
 
-			else cout << "Unable to open file";
+			else cout << "Unable to open file";*/
 
 			}
+			listPrint(monthValA, dayValA, yearValA, SizeArray);
 			return 0;
 			break;
 
@@ -275,24 +271,24 @@ double datetoseconds(int monthVal, int dayVal, int yearVal)
 	return(timeFormat);
 }
 
-void listPrint(int monthVal[], int dayVal[], int yearVal[], int SizeArray)
+void listPrint(int monthValA[], int dayValA[], int yearValA[], int SizeArray)
 {
 
 	for (int i = 0; i < SizeArray; i++)
 	{
-		cout << monthVal[i] << "\t \t" << dayVal[i] << "\t \t" << yearVal[i] << "\t \t" <<  endl;
+		cout << monthValA[i] << "\t \t" << dayValA[i] << "\t \t" << yearValA[i] << "\t \t" <<  endl;
 
 	}
 	cout << endl;
 	return;
 }
 
-void listPrint(char ProfessorName[], string date[], char Assignment[], int SizeArray)
+void listPrint(string ProfessorName[], string Assignment[], int SizeArray)
 {
 
 	for (int i = 0; i < SizeArray; i++)
 	{
-		cout << ProfessorName[i] << " \t " << date[i] << " \t " << Assignment[i] << endl;
+		cout << ProfessorName[i] << " \t " << Assignment[i] << " \t " << endl;
 	}
 	cout << endl;
 	return;
