@@ -1,0 +1,17 @@
+﻿1>------ Build started: Project: Test and Project Database, Configuration: Debug Win32 ------
+1>Test and Project Database.cpp
+1>c:\users\3mackenzie3\source\repos\scheduler\test and project database.cpp(65): warning C4838: conversion from 'int' to 'char' requires a narrowing conversion
+1>c:\users\3mackenzie3\source\repos\scheduler\test and project database.cpp(66): warning C4838: conversion from 'int' to 'char' requires a narrowing conversion
+1>c:\users\3mackenzie3\source\repos\scheduler\test and project database.cpp(50): warning C4101: 'wantedTime': unreferenced local variable
+1>c:\users\3mackenzie3\source\repos\scheduler\test and project database.cpp(51): warning C4101: 'currentTime': unreferenced local variable
+1>c:\users\3mackenzie3\source\repos\scheduler\test and project database.cpp(65): error C4700: uninitialized local variable 'Giesey' used
+1>c:\users\3mackenzie3\source\repos\scheduler\test and project database.cpp(65): error C4700: uninitialized local variable 'Harrell' used
+1>c:\users\3mackenzie3\source\repos\scheduler\test and project database.cpp(65): error C4700: uninitialized local variable 'Hampton' used
+1>c:\users\3mackenzie3\source\repos\scheduler\test and project database.cpp(65): error C4700: uninitialized local variable 'Holbrook' used
+1>c:\users\3mackenzie3\source\repos\scheduler\test and project database.cpp(65): error C4700: uninitialized local variable 'Bao' used
+1>c:\users\3mackenzie3\source\repos\scheduler\test and project database.cpp(66): error C4700: uninitialized local variable 'Test' used
+1>c:\users\3mackenzie3\source\repos\scheduler\test and project database.cpp(66): error C4700: uninitialized local variable 'Quiz' used
+1>c:\users\3mackenzie3\source\repos\scheduler\test and project database.cpp(66): error C4700: uninitialized local variable 'Project' used
+1>c:\users\3mackenzie3\source\repos\scheduler\test and project database.cpp(66): error C4700: uninitialized local variable 'Homework' used
+1>Done building project "Test and Project Database.vcxproj" -- FAILED.
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========

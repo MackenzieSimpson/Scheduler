@@ -3,7 +3,7 @@
 // Email Address:	mcsimpson@my.milligan.edu
 // Assignment:		Term Project
 // Description:		Program to manage assignment dates
-// Last Changed:	February 22, 2019
+// Last Changed:	February 27, 2019
 
 #include "pch.h"
 #include <iostream>
@@ -17,27 +17,29 @@
 
 using namespace std;
 
-double timeConverter(int monthVal, int dayVal, int yearVal);
-// Precondition: User inputs dates In D M YYYY form.
-// Postcondition: how many seconds from jan 1 1970 to date inputed.
-char ID(int Giesey, string Assignment, int Mechanical, int Electrical);
-// Precondition: User will input his/her name.
-// Postcondition: User will know what class/subject they are putting the assignment in for.
+double datetoseconds(int monthVal, int dayVal, int yearVal);
+// Precondition: User inputs dates In mm dd yyyy form.
+// Postcondition: Returns how many seconds from jan 1 1970 to 12:00 am date inputed.
+void listPrint(int monthVal [], int dayVal[], int yearVal[], int SizeArray);
+//Precondition: The values of the data for different assignments are passed SArray1, IArray1, OArray, XArray,and FArray. 
+//				The size is passed in ArraySize.
+//Postcondition: The values of the three arrays will be output to console seperated by tabs in order.
+
+void listPrint(char ProfessorName[], string date[], char AssignmentName[], int SizeArray);
+//Precondition: Char Professor names are passed Professor.
+//              Dates for each assignments are passed through date.
+//              Assignments are passed through Assignment. 
+//				The size is passed in SizeArray.
+//Postcondition: The values of the three arrays will be output to console seperated by tabs in index order.
 
 
 
+const int SizeArray = 10;
 int main()
 
 {
-	string date;
-	int Professor;
-	string Assignment;
+	
 	string Answer;
-	int first_date_month;
-	int first_date_days;
-	int first_date_year;
-	int difference;
-	int jdate, jdate2;
 	const int daysInYear[] = { 0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365 };
 	const int daysInLeapYear[] = { 0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366 };
 	const int daysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -51,9 +53,21 @@ int main()
 	double AssignmentDate;
 	int Giesey;
 	int Harrell;
-	int course;
-	int Electrical;
-	int Mechanical;
+	int Hampton;
+	int Holbrook;
+	int Bao;
+	int Test;
+	int Quiz;
+	string date;
+	int Project;
+	int Homework;
+	//string date[SizeArray] = { {1, 3, 2019},{2, 3,2019},{3, 3, 2019},{4, 3, 2019},{5, 3, 2019} };//
+	char ProfessorName[SizeArray] = { Giesey,Harrell,Hampton, Holbrook, Bao };
+	char AssignmentName[SizeArray] = { Test, Quiz, Project, Homework };
+	string Professor;
+	string Assignment;
+	
+	
 	
 
 	int choice;
@@ -66,7 +80,7 @@ int main()
 	cout << "Enter your choice and press return.\n";
 	cin >> choice;
 	{if (choice >= 1 && choice <= 3)
-		do
+		
 	{
 		switch (choice)
 
@@ -74,16 +88,16 @@ int main()
 		case 1: {
 
 			// Professor inputs his/her name, name of the assignment, and date of the assignment.//
-			cout << "Enter Professor's Name, Please put Giesey or Harrell and Electrical or Mechanical.\n";
-			cin >> Giesey >> Electrical >> Mechanical;
+			cout << "Enter Professor's Name. \n";
+			cin >> Professor;
 			
-			cout << "Hello " << Giesey << " what is the name of your next assignment?\n";// Echo Professor's Name//
-			cin >> Giesey;
+			cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
+			getline(cin,Professor);
 			
-			getline(cin, Assignment);
+			getline(cin,Assignment);
 			 
-			course=ID(Giesey, Assignment, Mechanical,Electrical);
-			cout << course;
+			/*course=ID(Giesey, Assignment, Mechanical,Electrical);
+			cout << course;*/
 			
 			
 			
@@ -91,35 +105,36 @@ int main()
 			//date format converter
 
 			
-			cin >> monthVal;
+				cin >> monthVal;
 
-			while ((monthVal < 1) || (monthVal > 12))
-			{
+				/*while ((monthVal < 1) || (monthVal > 12))
+				{
 				cout << "month input must be from 1 to 12.\n";
 				cin >> monthVal;
-			}
+				}*/
 
-			cin >> dayVal;
+				cin >> dayVal;
 
-			while ((dayVal < 1) || (dayVal > 31))
-			{
+				/*while ((dayVal < 1) || (dayVal > 31))
+				{
 				cout << "day input must be from 1 to 31.\n";
 				cin >> dayVal;
-			}
+				}*/
 
-			cin >> yearVal;
+				cin >> yearVal;
 
-			while ((yearVal < 2019) || (monthVal > 2099))
-			{
+				/*while ((yearVal < 2019) || (monthVal > 2099))
+				{
 				cout << "year input must be from 2019 to 2099.\n";
 				cin >> yearVal;
-			}
+				}*/	
 
 			cout << "you have selected " << monthVal << ", " << dayVal << ", " << yearVal << "\n";
-			AssignmentDate= timeConverter(monthVal, dayVal, yearVal);
+			AssignmentDate= datetoseconds(monthVal, dayVal, yearVal);
 
 
 			cout << "you selected an assignment date for.\n" << AssignmentDate;
+			AssignmentDate = datetoseconds(monthVal, dayVal, yearVal);
 			
 			time_t(currentTime);
 			currentTime = time(NULL);
@@ -186,15 +201,17 @@ int main()
 				/*jdate = (first_date_year - 1900) * 365 + daysInYear[first_date_month] + first_date_days;// Assignment Date Professor inputted//
 				jdate2 = (Year- 1900) * 365 + daysInYear[Month] + Day;// Current Date inputted//
 				difference = abs(jdate - jdate2);// Number of days in between//
-				cout << "The number of days between these dates is: " << difference << endl;
+				cout << "The number of days between these dates is: " << difference << endl;*/
 				ofstream mfile;
 				mfile.open("data.txt");
 				//Precondition:  Date must be in DD/MM/YYYY format without slashes in between and must not already be taken or be the current date.//
 				//Postcondition:  The date entered is stored into a text file.// 
-				mfile << first_date_month << "/" << first_date_days << "/" << first_date_year << endl;*/
+				mfile << monthVal << "/" << dayVal << "/" << yearVal << endl;
 				
-				
-				break;
+				listPrint(ProfessorName, date, Assignment, SizeArray);
+				cout << endl;
+				listPrint(monthVal, dayVal, yearVal, SizeArray);
+					break;
 			}
 		}
 
@@ -241,13 +258,13 @@ int main()
 	
 
 }
-double timeConverter(int monthVal, int dayVal, int yearVal)
+double datetoseconds(int monthVal, int dayVal, int yearVal)
 {
 
 	double timeFormat;
-	int daysOfMonth[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	const int daysOfMonth[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	timeFormat = (yearVal - 1970) * 365;
-	timeFormat += (yearVal - 1970) / 4;
+	timeFormat += (yearVal - 1969) / 4;
 	for (int i = 0; i < monthVal - 1; i++)
 	{
 		timeFormat += daysOfMonth[i];
@@ -258,23 +275,31 @@ double timeConverter(int monthVal, int dayVal, int yearVal)
 	return(timeFormat);
 }
 
-char ID(int Giesey, string Assignment, int Mechanical, int Electrical)
+void listPrint(int monthVal[], int dayVal[], int yearVal[], int SizeArray)
 {
-	
-		
 
-		if (Giesey)
-		{
-			return (Electrical);
+	for (int i = 0; i < SizeArray; i++)
+	{
+		cout << monthVal[i] << "\t \t" << dayVal[i] << "\t \t" << yearVal[i] << "\t \t" <<  endl;
 
-		}
-		else 
-		{
-			return (Mechanical);
-		}
-		
+	}
+	cout << endl;
+	return;
+}
+
+void listPrint(char ProfessorName[], string date[], char Assignment[], int SizeArray)
+{
+
+	for (int i = 0; i < SizeArray; i++)
+	{
+		cout << ProfessorName[i] << " \t " << date[i] << " \t " << Assignment[i] << endl;
+	}
+	cout << endl;
+	return;
 
 }
+
+
 
 
 
