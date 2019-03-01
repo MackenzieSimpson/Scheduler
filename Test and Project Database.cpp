@@ -25,16 +25,14 @@ void listPrint(int monthValA[], int dayValA[], int yearValA[], int SizeArray);
 //				The size is passed in ArraySize.
 //Postcondition: The values of the three arrays will be output to console seperated by tabs in order.
 
-void listPrint(string ProfessorName[], string AssignmentName[], int SizeArray);
-//Precondition: Char Professor names are passed Professor.
-//              Dates for each assignments are passed through date.
-//              Assignments are passed through Assignment. 
+void listPrint(string ProfessorName[], int SizeArray);
+//Precondition: string Professor names are passed Professor.
 //				The size is passed in SizeArray.
 //Postcondition: The values of the three arrays will be output to console seperated by tabs in index order.
 
 
-
-const int SizeArray = 5;
+int NumberProfessors = 5;
+const int SizeArray = 10;
 int main()
 
 {
@@ -59,7 +57,8 @@ int main()
 	int Homework;
 	//string date[SizeArray] = { {1, 3, 2019},{2, 3,2019},{3, 3, 2019},{4, 3, 2019},{5, 3, 2019} };//
 	string ProfessorName[SizeArray] = { "Dr. Giesey","Dr. Harrell", "Dr. Hampton", "Dr. Holbrook", "Dr. Bao" };
-	string AssignmentName[SizeArray] = { "Test", "Quiz", "Project", "Homework", "Lab" };
+	string AssignmentType[SizeArray] = { "Test", "Quiz", "Project", "Homework", "Lab" };
+	string AssignmentName[SizeArray];
 	string Professor;
 	string Assignment;
 	int choice;
@@ -83,16 +82,15 @@ cout.setf(ios::fixed);
 		case 1: {
 
 			// Professor inputs his/her name, name of the assignment, and date of the assignment.//
-			cout << "Enter Professor's Name. \n";
-			cin >> Professor;
+			cout << "Enter Professor's Index. \n";
+			listPrint(ProfessorName, NumberProfessors);
 			
 			cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
 			getline(cin,Professor);
 			
 			getline(cin,Assignment);
 			 
-			/*course=ID(Giesey, Assignment, Mechanical,Electrical);
-			cout << course;*/
+			
 			
 			
 			
@@ -102,28 +100,15 @@ cout.setf(ios::fixed);
 			
 				cin >> monthVal;
 
-				/*while ((monthVal < 1) || (monthVal > 12))
-				{
-				cout << "month input must be from 1 to 12.\n";
-				cin >> monthVal;
-				}*/
+				
 
 				cin >> dayVal;
 
-				/*while ((dayVal < 1) || (dayVal > 31))
-				{
-				cout << "day input must be from 1 to 31.\n";
-				cin >> dayVal;
-				}*/
+				
 
 				cin >> yearVal;
 
-				/*while ((yearVal < 2019) || (monthVal > 2099))
-				{
-				cout << "year input must be from 2019 to 2099.\n";
-				cin >> yearVal;
-				}*/	
-
+				
 			cout << "you have selected " << monthVal << ", " << dayVal << ", " << yearVal << "\n";
 			AssignmentDate= datetoseconds(monthVal, dayVal, yearVal);
 
@@ -139,37 +124,12 @@ cout.setf(ios::fixed);
 			timeDifference = AssignmentDate-currentTime;
 			cout << "Time until assignment is " << timeDifference << "\n";
 			
-			/*cout << "Put date in DD / MM / YYYY format." << endl;
-			cin >> first_date_month; // read the month
-			if (std::cin.get() != '/') // make sure there is a slash between MM and DD
-			{
-				std::cout << "expected /\n";
-				return 1;
-			}
-			std::cin >> first_date_days; // read the day
-			if (std::cin.get() != '/') // make sure there is a slash between DD and YYYY
-			{
-				std::cout << "expected /\n";
-				return 1;
-			}
-			std::cin >> first_date_year; // read the year*/
 			
 			
 			
 			
-			/*time_t current_time;
-			struct tm  local_time;
-			time(&current_time);
-			localtime_s(&local_time, &current_time); 
 			
-			int Year = local_time.tm_year + 1900;
-			int Month = local_time.tm_mon + 1;
-			int Day = local_time.tm_mday;
-
-			int Hour = local_time.tm_hour;
-			int Min = local_time.tm_min;
-			int Sec = local_time.tm_sec;*/
-			// telling current time
+			
 			
 			
 
@@ -192,18 +152,9 @@ cout.setf(ios::fixed);
 
 
 
-				// computing the days in between the inputted dates //
-				/*jdate = (first_date_year - 1900) * 365 + daysInYear[first_date_month] + first_date_days;// Assignment Date Professor inputted//
-				jdate2 = (Year- 1900) * 365 + daysInYear[Month] + Day;// Current Date inputted//
-				difference = abs(jdate - jdate2);// Number of days in between//
-				cout << "The number of days between these dates is: " << difference << endl;*/
-				/*ofstream mfile;
-				mfile.open("data.txt");
-				//Precondition:  Date must be in DD/MM/YYYY format without slashes in between and must not already be taken or be the current date.//
-				//Postcondition:  The date entered is stored into a text file.// 
-				mfile << monthVal << "/" << dayVal << "/" << yearVal << endl;*/
 				
-				listPrint(ProfessorName, AssignmentName, SizeArray);
+				
+				listPrint(ProfessorName, SizeArray);
 				cout << endl;
 				
 					break;
@@ -212,20 +163,7 @@ cout.setf(ios::fixed);
 
 		case 2: 
 			{ 
-			/*string line;
-			ifstream myfile("data.txt");
 			
-			if (myfile.is_open())
-			{
-
-				while (getline(myfile, line)) {
-					cout << "There is an assignment scheduled for "<< line << "." << endl;
-				}
-				myfile.close();
-
-			}
-
-			else cout << "Unable to open file";*/
 
 			}
 			listPrint(monthValA, dayValA, yearValA, SizeArray);
@@ -283,17 +221,23 @@ void listPrint(int monthValA[], int dayValA[], int yearValA[], int SizeArray)
 	return;
 }
 
-void listPrint(string ProfessorName[], string Assignment[], int SizeArray)
+void listPrint(string ProfessorName[], int SizeArray)
 {
 
 	for (int i = 0; i < SizeArray; i++)
 	{
-		cout << ProfessorName[i] << " \t " << Assignment[i] << " \t " << endl;
+		cout << i << ":"<< ProfessorName[i] << " \t " << endl;
 	}
 	cout << endl;
 	return;
 
 }
+/*void listPrint(string AssignmentType[], string AssignmentName[], int monthValA[], int dayValA[], int yearValA[], int SizeArray)
+{
+
+	for(int i=0; i < SizeArray; i++)
+
+}*/
 
 
 
