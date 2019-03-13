@@ -21,13 +21,13 @@ double datetoseconds(int monthVal, int dayVal, int yearVal);
 // Precondition: User inputs dates In mm dd yyyy form.
 // Postcondition: Returns how many seconds from jan 1 1970 to 12:00 am date inputed.
 void listPrint(int monthValA[], int dayValA[], int yearValA[], int SizeArray);
-//Precondition: The values of the data for different assignments are passed monthVal[], dayVal[], yearVal[]. 
-//				The size is passed in ArraySize.
+//Precondition: Three integer values are each stored in a seperate array. 
+//				SizeArray is the array size.
 //Postcondition: The values of the three arrays will be output to console seperated by tabs in order.
 
 void listPrint(string ProfessorName[], int SizeArray);
-//Precondition: string Professor names are passed Professor.
-//				The size is passed in SizeArray.
+//Precondition: String values are stored in an array.
+//				SizeArray is the array size.
 //Postcondition: The values of the three arrays will be output to console seperated by tabs in index order.
 
 
