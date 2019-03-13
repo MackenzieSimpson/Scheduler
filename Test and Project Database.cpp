@@ -3,7 +3,7 @@
 // Email Address:	mcsimpson@my.milligan.edu
 // Assignment:		Term Project
 // Description:		Program to manage assignment dates
-// Last Changed:	February 27, 2019
+// Last Changed:	March 12, 2019
 
 #include "pch.h"
 #include <iostream>
@@ -113,7 +113,7 @@ cout.setf(ios::fixed);
 			AssignmentDate= datetoseconds(monthVal, dayVal, yearVal);
 
 
-			cout << "you selected an assignment date for.\n" << AssignmentDate;
+			//cout << "you selected an assignment date for.\n" << AssignmentDate;//
 			AssignmentDate = datetoseconds(monthVal, dayVal, yearVal);
 			
 			time_t(currentTime);
@@ -151,8 +151,11 @@ cout.setf(ios::fixed);
 				cout << Assignment << " is scheduled for " << monthVal<< "/" << dayVal << "/" << yearVal << ", thank you.\n";//
 
 				ofstream mfile;
-				mfile.open("data.txt");
-				mfile << monthVal << "/" << dayVal << "/" << yearVal << endl;
+				mfile.open("datesdata.txt");
+				mfile << Assignment << " is on "<< monthVal << "/" << dayVal << "/" << yearVal << endl;
+				//mfile << monthVal << "/" << dayVal << "/" << yearVal << endl;//
+				mfile.close();
+				
 
 				
 				
@@ -166,7 +169,11 @@ cout.setf(ios::fixed);
 
 		case 2: 
 			{ 
-			
+			string line;
+			ifstream mfile;
+			mfile.open("datesdata.txt");
+			getline(mfile, line);
+			cout << line << endl;
 
 			}
 			
