@@ -150,12 +150,14 @@ cout.setf(ios::fixed);
 
 				cout << Assignment << " is scheduled for " << monthVal<< "/" << dayVal << "/" << yearVal << ", thank you.\n";//
 
-
+				ofstream mfile;
+				mfile.open("data.txt");
+				mfile << monthVal << "/" << dayVal << "/" << yearVal << endl;
 
 				
 				
-				listPrint(ProfessorName, SizeArray);
-				listPrint(monthValA, dayValA, yearValA, SizeArray);
+				/*ListPrint(ProfessorName, SizeArray);
+				listPrint(monthValA, dayValA, yearValA, SizeArray);*/
 				cout << endl;
 				
 					break;
