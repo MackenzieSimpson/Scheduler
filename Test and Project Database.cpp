@@ -155,6 +155,7 @@ cout.setf(ios::fixed);
 				
 				
 				listPrint(ProfessorName, SizeArray);
+				listPrint(monthValA, dayValA, yearValA, SizeArray);
 				cout << endl;
 				
 					break;
@@ -166,7 +167,7 @@ cout.setf(ios::fixed);
 			
 
 			}
-			listPrint(monthValA, dayValA, yearValA, SizeArray);
+			
 			return 0;
 			break;
 
