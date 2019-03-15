@@ -3,7 +3,7 @@
 // Email Address:	mcsimpson@my.milligan.edu
 // Assignment:		Term Project
 // Description:		Program to manage assignment dates
-// Last Changed:	March 12, 2019
+// Last Changed:	March 15, 2019
 
 #include "pch.h"
 #include <iostream>
@@ -174,6 +174,7 @@ cout.setf(ios::fixed);
 			mfile.open("datesdata.txt");
 			getline(mfile, line);
 			cout << line << endl;
+			mfile.close ();
 
 			}
 			
