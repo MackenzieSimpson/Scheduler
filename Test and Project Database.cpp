@@ -3,7 +3,7 @@
 // Email Address:	mcsimpson@my.milligan.edu
 // Assignment:		Term Project
 // Description:		Program to manage assignment dates
-// Last Changed:	March 21, 2019
+// Last Changed:	March 22, 2019
 
 #include "pch.h"
 #include <iostream>
@@ -63,7 +63,7 @@ cout.setf(ios::fixed);
 	cout << "Choose 3 to exit the program.\n";
 	cout << "Enter your choice and press return.\n";
 	cin >> choice;
-	{if (choice >= 1 && choice <= 3)
+	while (choice >= 1 && choice <= 3)
 		
 	{
 		switch (choice)
@@ -74,7 +74,7 @@ cout.setf(ios::fixed);
 			// Professor inputs his/her name, name of the assignment, and date of the assignment.//
 			/*cout << "Enter Professor's Index. \n";
 			listPrint(ProfessorName, NumberProfessors);*/
-			
+
 			cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
 			getline(cin,Professor);
 			
@@ -140,7 +140,7 @@ cout.setf(ios::fixed);
 
 			
 
-			if (currentTime== dayVal)// make sure that the dates are not the same //
+			if (monthVal < 1 || monthVal > 12,dayVal < 1 || dayVal > 31,yearVal != 2019)// make sure that the dates are not the same //
 			{
 				cout << "Sorry, the date you entered is not avaliable.\n";
 
@@ -157,7 +157,7 @@ cout.setf(ios::fixed);
 
 				ofstream mfile;
 				mfile.open("datesdata.txt");
-				mfile << Assignment << " is on "<< monthVal << "/" << dayVal << "/" << yearVal << endl;
+				mfile << Assignment << " "  << monthVal << "/" << dayVal << "/" << yearVal << endl;
 				//mfile << monthVal << "/" << dayVal << "/" << yearVal << endl;//
 				mfile.close();
 				
@@ -179,6 +179,7 @@ cout.setf(ios::fixed);
 			mfile.open("datesdata.txt");
 			getline(mfile, line);
 			cout << line << endl;
+			
 			mfile.close ();
 
 			}
@@ -195,19 +196,19 @@ cout.setf(ios::fixed);
 		}
 	
 	}
-	while (choice != 1 || choice != 2 || choice != 3);
+	if (choice != 1 || choice != 2 || choice != 3)
 	
 	{
 		cout << "The choice entered is not an option on the menu, please exit the program and enter 1,2, or 3.\n";
 	}
-	}
-
-	
-		return 0;
-
-	
-
 }
+
+	
+	
+
+	
+
+
 double datetoseconds(int monthVal, int dayVal, int yearVal)
 {
 
