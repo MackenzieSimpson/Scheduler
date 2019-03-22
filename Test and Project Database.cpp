@@ -3,7 +3,7 @@
 // Email Address:	mcsimpson@my.milligan.edu
 // Assignment:		Term Project
 // Description:		Program to manage assignment dates
-// Last Changed:	March 15, 2019
+// Last Changed:	March 21, 2019
 
 #include "pch.h"
 #include <iostream>
@@ -42,19 +42,9 @@ int main()
 	int yearValA[] = { 2019, 2019, 2019, 2019, 2019 };
 	int monthValA[] = { 3,3,3,3,3 };
 	int dayValA[] = { 1,2,3,4,5 };
-	double wantedTime;
-	double currentTime;
 	double timeDifference;
 	double AssignmentDate;
-	int Giesey;
-	int Harrell;
-	int Hampton;
-	int Holbrook;
-	int Bao;
-	int Test;
-	int Quiz;
-	int Project;
-	int Homework;
+	
 	//string date[SizeArray] = { {1, 3, 2019},{2, 3,2019},{3, 3, 2019},{4, 3, 2019},{5, 3, 2019} };//
 	string ProfessorName[SizeArray] = { "Dr. Giesey","Dr. Harrell", "Dr. Hampton", "Dr. Holbrook", "Dr. Bao" };
 	string AssignmentType[SizeArray] = { "Test", "Quiz", "Project", "Homework", "Lab" };
@@ -82,8 +72,8 @@ cout.setf(ios::fixed);
 		case 1: {
 
 			// Professor inputs his/her name, name of the assignment, and date of the assignment.//
-			cout << "Enter Professor's Index. \n";
-			listPrint(ProfessorName, NumberProfessors);
+			/*cout << "Enter Professor's Index. \n";
+			listPrint(ProfessorName, NumberProfessors);*/
 			
 			cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
 			getline(cin,Professor);
@@ -95,20 +85,35 @@ cout.setf(ios::fixed);
 			
 			
 			cout << "What date would you like " << Assignment << " to be on?\n"; //Echo Assignment Name//
+			cout << "Please enter the date in MM DD YYYY format.\n";
 			//date format converter
 
 			
 				cin >> monthVal;
+				if (monthVal < 1 || monthVal > 12)
+				{
+					cout << "The month entered is not in between 1 and 12, Please restart the program and try again.\n";
+				}
 
 				
 
 				cin >> dayVal;
+				if (dayVal < 1 || dayVal > 31)
+				{
+					cout << "The day entered is not in between 1 and 31, Please restart the program and try again.\n";
+				}
+
 
 				
 
 				cin >> yearVal;
+				if (yearVal != 2019)
+				{
+					cout << "The year entered is not 2019, Please restart the program and try again.\n";
+				}
 
 				
+			else 
 			cout << "you have selected " << monthVal << ", " << dayVal << ", " << yearVal << "\n";
 			AssignmentDate= datetoseconds(monthVal, dayVal, yearVal);
 
