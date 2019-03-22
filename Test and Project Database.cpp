@@ -114,6 +114,7 @@ cout.setf(ios::fixed);
 
 				
 			else 
+			{ 
 			cout << "you have selected " << monthVal << ", " << dayVal << ", " << yearVal << "\n";
 			AssignmentDate= datetoseconds(monthVal, dayVal, yearVal);
 
@@ -128,7 +129,7 @@ cout.setf(ios::fixed);
 
 			timeDifference = AssignmentDate-currentTime;
 			cout << "Time until assignment is " << timeDifference << "\n";
-			
+			}
 			
 			
 			
@@ -140,7 +141,7 @@ cout.setf(ios::fixed);
 
 			
 
-			if (monthVal < 1 || monthVal > 12,dayVal < 1 || dayVal > 31,yearVal != 2019)// make sure that the dates are not the same //
+			if (monthVal < 1 || monthVal > 12|| dayVal < 1 || dayVal < 31 || yearVal != 2019)// make sure that the dates are not the same //
 			{
 				cout << "Sorry, the date you entered is not avaliable.\n";
 
