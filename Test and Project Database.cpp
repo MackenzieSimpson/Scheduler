@@ -3,7 +3,7 @@
 // Email Address:	mcsimpson@my.milligan.edu
 // Assignment:		Term Project
 // Description:		Program to manage assignment dates
-// Last Changed:	February 27, 2019
+// Last Changed:	March 22, 2019
 
 #include "pch.h"
 #include <iostream>
@@ -21,13 +21,13 @@ double datetoseconds(int monthVal, int dayVal, int yearVal);
 // Precondition: User inputs dates In mm dd yyyy form.
 // Postcondition: Returns how many seconds from jan 1 1970 to 12:00 am date inputed.
 void listPrint(int monthValA[], int dayValA[], int yearValA[], int SizeArray);
-//Precondition: The values of the data for different assignments are passed monthVal[], dayVal[], yearVal[]. 
-//				The size is passed in ArraySize.
+//Precondition: Three integer values are each stored in a seperate array. 
+//				SizeArray is the array size.
 //Postcondition: The values of the three arrays will be output to console seperated by tabs in order.
 
 void listPrint(string ProfessorName[], int SizeArray);
-//Precondition: string Professor names are passed Professor.
-//				The size is passed in SizeArray.
+//Precondition: String values are stored in an array.
+//				SizeArray is the array size.
 //Postcondition: The values of the three arrays will be output to console seperated by tabs in index order.
 
 
@@ -42,10 +42,9 @@ int main()
 	int yearValA[] = { 2019, 2019, 2019, 2019, 2019 };
 	int monthValA[] = { 3,3,3,3,3 };
 	int dayValA[] = { 1,2,3,4,5 };
-	
 	double timeDifference;
 	double AssignmentDate;
-	
+
 	//string date[SizeArray] = { {1, 3, 2019},{2, 3,2019},{3, 3, 2019},{4, 3, 2019},{5, 3, 2019} };//
 	string ProfessorName[SizeArray] = { "Dr. Giesey","Dr. Harrell", "Dr. Hampton", "Dr. Holbrook", "Dr. Bao" };
 	string AssignmentType[SizeArray] = { "Test", "Quiz", "Project", "Homework", "Lab" };
@@ -86,14 +85,14 @@ int main()
 
 
 			cout << "What date would you like " << Assignment << " to be on?\n"; //Echo Assignment Name//
+			cout << "Please enter the date in MM DD YYYY format.\n";
 			//date format converter
-			cout << "Please enter date in MM DD YYYY formart\n";
 
 
 			cin >> monthVal;
 			if (monthVal < 1 || monthVal > 12)
 			{
-				cout << "You did not enter a valid month, please restart the program and pick a value between 1 and 12\n";
+				cout << "The month entered is not in between 1 and 12, Please restart the program and try again.\n";
 			}
 
 
@@ -101,43 +100,48 @@ int main()
 			cin >> dayVal;
 			if (dayVal < 1 || dayVal > 31)
 			{
-				cout << "You did not enter a valid day, please restart the program and pick a value between 1 and 31\n";
+				cout << "The day entered is not in between 1 and 31, Please restart the program and try again.\n";
 			}
+
+
+
 
 			cin >> yearVal;
 			if (yearVal != 2019)
 			{
-				cout << "Please restart the program and enter 2019.\n";
+				cout << "The year entered is not 2019, Please restart the program and try again.\n";
 			}
 
 
-			cout << "you have selected " << monthVal << ", " << dayVal << ", " << yearVal << "\n";
-			AssignmentDate = datetoseconds(monthVal, dayVal, yearVal);
+			else
+			{
+				cout << "you have selected " << monthVal << ", " << dayVal << ", " << yearVal << "\n";
+				AssignmentDate = datetoseconds(monthVal, dayVal, yearVal);
 
 
-			cout << "you selected an assignment date for.\n" << AssignmentDate;
-			AssignmentDate = datetoseconds(monthVal, dayVal, yearVal);
+				//cout << "you selected an assignment date for.\n" << AssignmentDate;//
+				AssignmentDate = datetoseconds(monthVal, dayVal, yearVal);
 
-			time_t(currentTime);
-			currentTime = time(NULL);
-			cout << currentTime << " seconds has passed since 00:00:00 GMT, Jan 1, 1970\n";
-
-
-			timeDifference = AssignmentDate - currentTime;
-			cout << "Time until assignment is " << timeDifference << "\n";
+				time_t(currentTime);
+				currentTime = time(NULL);
+				cout << currentTime << " seconds has passed since 00:00:00 GMT, Jan 1, 1970\n";
 
 
-
-
-
-
+				timeDifference = AssignmentDate - currentTime;
+				cout << "Time until assignment is " << timeDifference << "\n";
+			}
 
 
 
 
 
 
-			if (currentTime == dayVal)// make sure that the dates are not the same //
+
+
+
+
+
+			if (0== dayVal)// make sure that the dates are not the same //
 			{
 				cout << "Sorry, the date you entered is not avaliable.\n";
 
@@ -152,11 +156,17 @@ int main()
 
 				cout << Assignment << " is scheduled for " << monthVal << "/" << dayVal << "/" << yearVal << ", thank you.\n";//
 
+				ofstream mfile;
+				mfile.open("datesdata.txt");
+				mfile << Assignment << " " << monthVal << "/" << dayVal << "/" << yearVal << endl;
+				//mfile << monthVal << "/" << dayVal << "/" << yearVal << endl;//
+				mfile.close();
 
 
 
 
-				listPrint(ProfessorName, SizeArray);
+				/*ListPrint(ProfessorName, SizeArray);
+				listPrint(monthValA, dayValA, yearValA, SizeArray);*/
 				cout << endl;
 
 				break;
@@ -165,10 +175,16 @@ int main()
 
 		case 2:
 		{
+			string line;
+			ifstream mfile;
+			mfile.open("datesdata.txt");
+			getline(mfile, line);
+			cout << line << endl;
 
+			mfile.close();
 
 		}
-		listPrint(monthValA, dayValA, yearValA, SizeArray);
+
 		return 0;
 		break;
 
@@ -186,11 +202,10 @@ int main()
 	{
 		cout << "The choice entered is not an option on the menu, please exit the program and enter 1,2, or 3.\n";
 	}
-
-
-
-	return 0;
 }
+
+
+
 
 
 
@@ -237,9 +252,7 @@ void listPrint(string ProfessorName[], int SizeArray)
 }
 /*void listPrint(string AssignmentType[], string AssignmentName[], int monthValA[], int dayValA[], int yearValA[], int SizeArray)
 {
-
 	for(int i=0; i < SizeArray; i++)
-
 }*/
 
 
@@ -265,5 +278,4 @@ void listPrint(string ProfessorName[], int SizeArray)
 //   4. Use the Error List window to view errors
 //   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
 //   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
-
 
