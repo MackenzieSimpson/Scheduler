@@ -51,7 +51,7 @@ int main()
 	string AssignmentName[SizeArray];
 	string Professor;
 	string Assignment;
-	int currentTime;
+	double currentTime;
 	int choice;
 cout.setf(ios::fixed);
 	cout.setf(ios::showpoint);
@@ -143,7 +143,7 @@ cout.setf(ios::fixed);
 
 
 
-			if (dayVal=currentTime)// make sure that the dates are not the same //
+			if (currentTime== dayVal)// make sure that the dates are not the same //
 			{
 				cout << "Sorry, the date you entered is not avaliable.\n";
 
