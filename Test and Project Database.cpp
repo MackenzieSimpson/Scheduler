@@ -44,6 +44,7 @@ int main()
 	int dayValA[] = { 1,2,3,4,5 };
 	double timeDifference;
 	double AssignmentDate;
+	double currentTime;
 	
 	//string date[SizeArray] = { {1, 3, 2019},{2, 3,2019},{3, 3, 2019},{4, 3, 2019},{5, 3, 2019} };//
 	string ProfessorName[SizeArray] = { "Dr. Giesey","Dr. Harrell", "Dr. Hampton", "Dr. Holbrook", "Dr. Bao" };
@@ -51,9 +52,8 @@ int main()
 	string AssignmentName[SizeArray];
 	string Professor;
 	string Assignment;
-	double currentTime;
 	int choice;
-cout.setf(ios::fixed);
+	cout.setf(ios::fixed);
 	cout.setf(ios::showpoint);
 	cout.precision(2);
 
@@ -121,7 +121,7 @@ cout.setf(ios::fixed);
 				AssignmentDate = datetoseconds(monthVal, dayVal, yearVal);
 
 
-				//cout << "you selected an assignment date for.\n" << AssignmentDate;//
+				cout << "you selected an assignment date for.\n" << AssignmentDate;
 				AssignmentDate = datetoseconds(monthVal, dayVal, yearVal);
 
 				time_t(currentTime);
