@@ -5,21 +5,15 @@
 // Description:		Program to manage assignment dates
 // Last Changed:	March 22, 2019
 
-#include "pch.h"
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <cmath>
-#include <stdio.h>
-#include <ctime>
+#include "dateClass.h"
+#include "stdafx.h"
+dateClass theDates;
 
 
 
-using namespace std;
 
-double datetoseconds(int monthVal, int dayVal, int yearVal);
-// Precondition: User inputs dates In mm dd yyyy form.
-// Postcondition: Returns how many seconds from jan 1 1970 to 12:00 am date inputed.
+
+
 void listPrint(int monthValA[], int dayValA[], int yearValA[], int SizeArray);
 //Precondition: Three integer values are each stored in a seperate array. 
 //				SizeArray is the array size.
@@ -31,14 +25,11 @@ void listPrint(string ProfessorName[], int SizeArray);
 //Postcondition: The values of the three arrays will be output to console seperated by tabs in index order.
 
 
-int NumberProfessors = 5;
-const int SizeArray = 10;
+
 int main()
 
 {
-	int dayVal;
-	int monthVal;
-	int yearVal;
+
 	int yearValA[] = { 2019, 2019, 2019, 2019, 2019 };
 	int monthValA[] = { 3,3,3,3,3 };
 	int dayValA[] = { 1,2,3,4,5 };
@@ -210,22 +201,7 @@ int main()
 
 
 
-double datetoseconds(int monthVal, int dayVal, int yearVal)
-{
 
-	double timeFormat;
-	const int daysOfMonth[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	timeFormat = (yearVal - 1970) * 365;
-	timeFormat += (yearVal - 1969) / 4;
-	for (int i = 0; i < monthVal - 1; i++)
-	{
-		timeFormat += daysOfMonth[i];
-	}
-	timeFormat += dayVal - 1;
-	timeFormat = timeFormat * 24 * 60 * 60;
-	cout << timeFormat;
-	return(timeFormat);
-}
 
 void listPrint(int monthValA[], int dayValA[], int yearValA[], int SizeArray)
 {
