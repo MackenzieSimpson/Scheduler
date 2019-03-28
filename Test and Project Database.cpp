@@ -80,9 +80,9 @@ int main()
 			cin >> Professor;
 
 			cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
-			getline(cin, Professor);
+			
 
-			getline(cin, Assignment);
+			cin >> Assignment;
 
 
 
