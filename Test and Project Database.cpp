@@ -56,24 +56,28 @@ int main()
 	cout.setf(ios::showpoint);
 	cout.precision(2);
 
-
+	do
+	{
 
 	cout << "Choose 1 to input date and assignment. \n";
 	cout << "Choose 2 to look at assignment log.\n";
 	cout << "Choose 3 to exit the program.\n";
 	cout << "Enter your choice and press return.\n";
 	cin >> choice;
-	while (choice >= 1 && choice <= 3)
+	
+	
 
-	{
+	
 		switch (choice)
 
 		{
-		case 1: {
+		case 1: 
+		{
 
-			// Professor inputs his/her name, name of the assignment, and date of the assignment.//
-			/*cout << "Enter Professor's Index. \n";
-			listPrint(ProfessorName, NumberProfessors);*/
+			//Professor inputs his/her name, name of the assignment, and date of the assignment.//
+			cout << "Enter Professor's Name. \n";
+			listPrint(ProfessorName, NumberProfessors);
+			cin >> Professor;
 
 			cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
 			getline(cin, Professor);
@@ -158,8 +162,8 @@ int main()
 
 				ofstream mfile;
 				mfile.open("datesdata.txt");
-				mfile << Assignment << " " << monthVal << "/" << dayVal << "/" << yearVal << endl;
-				//mfile << monthVal << "/" << dayVal << "/" << yearVal << endl;//
+				mfile << Professor << " " << Assignment << " " << monthVal << "/" << dayVal << "/" << yearVal << endl;
+				
 				mfile.close();
 
 
@@ -167,10 +171,11 @@ int main()
 
 				/*ListPrint(ProfessorName, SizeArray);
 				listPrint(monthValA, dayValA, yearValA, SizeArray);*/
-				cout << endl;
+				
 
-				break;
+				
 			}
+			break;
 		}
 
 		case 2:
@@ -182,21 +187,24 @@ int main()
 			cout << line << endl;
 
 			mfile.close();
-
+			break;
 		}
 
-		return 0;
-		break;
+		
+		
 
-		case 3: {
-		} cout << "Please hit the red x to exit the program.\n";
-			return 0;
+		case 3:
+		{
+			exit (0);
+			
 			break;
 
 
 		}
-
+		
+		}
 	}
+	while (choice >= 1 && choice <= 3);
 	if (choice != 1 || choice != 2 || choice != 3)
 
 	{
