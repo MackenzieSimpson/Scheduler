@@ -1,5 +1,5 @@
 #pragma once
-#include "pch.h"
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -7,7 +7,8 @@
 #include <stdio.h>
 #include <ctime>
 #include <limits>
+#include "assignmentDate.h"
+#include "assignmentType.h"
 
 using namespace std;
-int NumberProfessors = 5;
 const int SizeArray = 10;

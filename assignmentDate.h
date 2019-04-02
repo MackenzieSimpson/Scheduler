@@ -1,16 +1,17 @@
 #pragma once
-class dateClass
+class assignmentDate
 {
 public:
-	dateClass();
-	~dateClass();
+	assignmentDate();
+	~assignmentDate();
 	double dateToSeconds(int monthVal, int dayVal, int yearVal);
 	// Precondition: User inputs dates In mm dd yyyy form.
 	// Postcondition: Returns how many seconds from jan 1 1970 to 12:00 am date inputed.
 	void inputDates();
 	//Precondtion: None
+	void outputDates();
 
-	
+
 	//Accessor functions//
 	int getmonthVal();
 	//Preconditions:  None 
@@ -22,19 +23,19 @@ public:
 	//Preconditions:  None 
 	//Postcondition:  yearVal is returned by function
 	double getsecVal();
-	
-	
+
+
 
 	//Mutator functions//
 	int setmonthVal(int value);
-		//Preconditions:  Value to set monthVal is given in value
-		//Postcondition:  monthVal is set to value, value is also returned.
+	//Preconditions:  Value to set monthVal is given in value
+	//Postcondition:  monthVal is set to value, value is also returned.
 	int setdayVal(int value);
-		//Preconditions:  Value to set dayVal is given in value
-		//Postcondition:  dayVal is set to value, value is also returned.
+	//Preconditions:  Value to set dayVal is given in value
+	//Postcondition:  dayVal is set to value, value is also returned.
 	int setyearVal(int value);
-		//Preconditions:  Value to set yearVal is given in value
-		//Postcondition:  yearVal is set to value, value is also returned.
+	//Preconditions:  Value to set yearVal is given in value
+	//Postcondition:  yearVal is set to value, value is also returned.
 	double setsecVal(double value);
 
 
@@ -42,4 +43,6 @@ private:
 	int dayVal, monthVal, yearVal;
 	double secVal;
 };
+
+
 

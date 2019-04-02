@@ -1,58 +1,57 @@
+#include "assignmentDate.h"
 #include "stdafx.h"
-#include "dateClass.h"
 
 
 
-
-dateClass::dateClass()
+assignmentDate::assignmentDate()
 {
 }
 
 
-dateClass::~dateClass()
+assignmentDate::~assignmentDate()
 {
 }
 //Accessor functions//
-int dateClass::getmonthVal()
+int assignmentDate::getmonthVal()
 {
 	return(monthVal);
 }
 
-int dateClass::getdayVal()
+int assignmentDate::getdayVal()
 {
 	return(dayVal);
 }
 
-int dateClass::getyearVal()
+int assignmentDate::getyearVal()
 {
 	return(yearVal);
 }
-double dateClass::getsecVal()
+double assignmentDate::getsecVal()
 {
 	return (secVal);
 }
 
 
 //Mutator functions//
-int dateClass:: setmonthVal(int value)
+int assignmentDate::setmonthVal(int value)
 {
 	monthVal = value;
 	return(value);
 }
 
-int dateClass:: setdayVal(int value)
+int assignmentDate::setdayVal(int value)
 {
 	dayVal = value;
 	return(value);
 }
 
-int dateClass::setyearVal(int value)
+int assignmentDate::setyearVal(int value)
 {
-	yearVal= value;
+	yearVal = value;
 	return(value);
 
 }
-double dateClass::setsecVal(double value)
+double assignmentDate::setsecVal(double value)
 {
 	secVal = value;
 	return(value);
@@ -60,7 +59,7 @@ double dateClass::setsecVal(double value)
 
 
 
-double dateClass::dateToSeconds(int monthVal, int dayVal, int yearVal)
+double assignmentDate::dateToSeconds(int monthVal, int dayVal, int yearVal)
 {
 
 	double timeFormat;
@@ -84,7 +83,7 @@ double dateClass::dateToSeconds(int monthVal, int dayVal, int yearVal)
 
 	return(timeFormat);
 }
-void dateClass::inputDates()
+void assignmentDate::inputDates()
 {
 	cout << "enter workout month, day and year.\n";
 	cin >> monthVal;
@@ -129,4 +128,19 @@ void dateClass::inputDates()
 	}
 
 	cout << "you have selected " << monthVal << ", " << dayVal << ", " << yearVal << "\n";
+	ofstream mfile;
+	mfile.open("datesdata.txt");
+	mfile << monthVal << "/" << dayVal << "/" << yearVal << endl;
+	mfile.close();
+}
+void assignmentDate::outputDates()
+{
+	string line;
+	ifstream mfile;
+	mfile.open("datesdata.txt");
+	getline(mfile, line);
+	cout << line << endl;
+
+	mfile.close();
+
 }

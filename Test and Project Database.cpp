@@ -3,15 +3,22 @@
 // Email Address:	mcsimpson@my.milligan.edu
 // Assignment:		Term Project
 // Description:		Program to manage assignment dates
-// Last Changed:	March 22, 2019
+// Last Changed:	April 04, 2019
 
-#include "dateClass.h"
+#include "assignmentDate.h"
 #include "stdafx.h"
-dateClass theDates;
+#include "assignmentDate.cpp"
+#include "assignmentType.h"
+#include "assignmentType.cpp"
 
 
 
 
+
+
+
+
+assignmentDate date;
 
 
 void listPrint(int monthValA[], int dayValA[], int yearValA[], int SizeArray);
@@ -79,89 +86,15 @@ int main()
 			cout << "Please enter the date in MM DD YYYY format.\n";
 			//date format converter
 
+			date.inputDates();
+			date.dateToSeconds( 04, 02, 2019);
 
-			cin >> monthVal;
-			if (monthVal < 1 || monthVal > 12)
-			{
-				cout << "The month entered is not in between 1 and 12, Please restart the program and try again.\n";
-			}
-
-
-
-			cin >> dayVal;
-			if (dayVal < 1 || dayVal > 31)
-			{
-				cout << "The day entered is not in between 1 and 31, Please restart the program and try again.\n";
-			}
+			cout << endl;
 
 
 
 
-			cin >> yearVal;
-			if (yearVal != 2019)
-			{
-				cout << "The year entered is not 2019, Please restart the program and try again.\n";
-			}
-
-
-			else
-			{
-				cout << "you have selected " << monthVal << ", " << dayVal << ", " << yearVal << "\n";
-				AssignmentDate = datetoseconds(monthVal, dayVal, yearVal);
-
-
-				//cout << "you selected an assignment date for.\n" << AssignmentDate;//
-				AssignmentDate = datetoseconds(monthVal, dayVal, yearVal);
-
-				time_t(currentTime);
-				currentTime = time(NULL);
-				cout << currentTime << " seconds has passed since 00:00:00 GMT, Jan 1, 1970\n";
-
-
-				timeDifference = AssignmentDate - currentTime;
-				cout << "Time until assignment is " << timeDifference << "\n";
-			}
-
-
-
-
-
-
-
-
-
-
-
-			if (0== dayVal)// make sure that the dates are not the same //
-			{
-				cout << "Sorry, the date you entered is not avaliable.\n";
-
-				if (true)
-				{
-					cout << "Please restart the program and enter an alternate date. \n";
-				}
-			}
-			else
-			{
-				cout << "The date you entered is avaliable.\n"; // assignment is stored in text file //
-
-				cout << Assignment << " is scheduled for " << monthVal << "/" << dayVal << "/" << yearVal << ", thank you.\n";//
-
-				ofstream mfile;
-				mfile.open("datesdata.txt");
-				mfile << Assignment << " " << monthVal << "/" << dayVal << "/" << yearVal << endl;
-				//mfile << monthVal << "/" << dayVal << "/" << yearVal << endl;//
-				mfile.close();
-
-
-
-
-				/*ListPrint(ProfessorName, SizeArray);
-				listPrint(monthValA, dayValA, yearValA, SizeArray);*/
-				cout << endl;
-
-				break;
-			}
+			break;
 		}
 
 		case 2:
@@ -174,19 +107,19 @@ int main()
 
 			mfile.close();
 
-		}
 
+
+			return 0;
+			break;
+		}
+		case 3:
+		{ cout << "Please hit the red x to exit the program.\n";
 		return 0;
 		break;
 
-		case 3: {
-		} cout << "Please hit the red x to exit the program.\n";
-			return 0;
-			break;
-
 
 		}
-
+		}
 	}
 	if (choice != 1 || choice != 2 || choice != 3)
 
