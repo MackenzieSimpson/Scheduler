@@ -53,79 +53,83 @@ int main()
 	cout.setf(ios::showpoint);
 	cout.precision(2);
 
-
-
-	cout << "Choose 1 to input date and assignment. \n";
-	cout << "Choose 2 to look at assignment log.\n";
-	cout << "Choose 3 to exit the program.\n";
-	cout << "Enter your choice and press return.\n";
-	cin >> choice;
-	while (choice >= 1 && choice <= 3)
-
+	do
 	{
-		switch (choice)
+		cout << "Choose 1 to input date and assignment. \n";
+		cout << "Choose 2 to look at assignment log.\n";
+		cout << "Choose 3 to exit the program.\n";
+		cout << "Enter your choice and press return.\n";
+		cin >> choice;
+
 
 		{
-		case 1: {
+			switch (choice)
 
-			// Professor inputs his/her name, name of the assignment, and date of the assignment.//
-			/*cout << "Enter Professor's Index. \n";
-			listPrint(ProfessorName, NumberProfessors);*/
+			{
+			case 1: {
 
-			cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
-			getline(cin, Professor);
+				// Professor inputs his/her name, name of the assignment, and date of the assignment.//
+				/*cout << "Enter Professor's Index. \n";
+				listPrint(ProfessorName, NumberProfessors);*/
 
-			getline(cin, Assignment);
+				cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
+				getline(cin, Professor);
 
-
-
-
-
-			cout << "What date would you like " << Assignment << " to be on?\n"; //Echo Assignment Name//
-			cout << "Please enter the date in MM DD YYYY format.\n";
-			//date format converter
-
-			date.inputDates();
-			date.dateToSeconds( 04, 02, 2019);
-
-			cout << endl;
+				getline(cin, Assignment);
 
 
 
 
-			break;
-		}
 
-		case 2:
-		{
-			string line;
-			ifstream mfile;
-			mfile.open("datesdata.txt");
-			getline(mfile, line);
-			cout << line << endl;
+				cout << "What date would you like " << Assignment << " to be on?\n"; //Echo Assignment Name//
+				cout << "Please enter the date in MM DD YYYY format.\n";
+				//date format converter
 
-			mfile.close();
+				date.inputDates();
+				date.dateToSeconds(04, 02, 2019);
+
+				cout << endl;
 
 
 
+
+				break;
+			}
+
+			case 2:
+			{
+				string line;
+				ifstream mfile;
+				mfile.open("datesdata.txt");
+				getline(mfile, line);
+				cout << line << endl;
+
+				mfile.close();
+
+
+
+				return 0;
+				break;
+			}
+			case 3:
+			{ cout << "Please hit the red x to exit the program.\n";
 			return 0;
 			break;
-		}
-		case 3:
-		{ cout << "Please hit the red x to exit the program.\n";
-		return 0;
-		break;
 
 
+			}
+			}
 		}
-		}
-	}
-	if (choice != 1 || choice != 2 || choice != 3)
+		while (choice >= 1 && choice <= 3);
+		if (choice != 1 || choice != 2 || choice != 3)
 
-	{
-		cout << "The choice entered is not an option on the menu, please exit the program and enter 1,2, or 3.\n";
+		{
+			cout << "The choice entered is not an option on the menu, please exit the program and enter 1,2, or 3.\n";
+
+		}
 	}
 }
+
 
 
 
