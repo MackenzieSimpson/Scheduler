@@ -98,28 +98,22 @@ int main()
 
 			case 2:
 			{
-				string line;
-				ifstream mfile;
-				mfile.open("datesdata.txt");
-				getline(mfile, line);
-				cout << line << endl;
-
-				mfile.close();
+				date.outputDates();
 
 
-
-				return 0;
+				
 				break;
 			}
 			case 3:
-			{ cout << "Please hit the red x to exit the program.\n";
-			return 0;
+			{ 
+			exit (0);
 			break;
 
 
 			}
 			}
 		}
+	}
 		while (choice >= 1 && choice <= 3);
 		if (choice != 1 || choice != 2 || choice != 3)
 
@@ -127,7 +121,8 @@ int main()
 			cout << "The choice entered is not an option on the menu, please exit the program and enter 1,2, or 3.\n";
 
 		}
-	}
+
+
 }
 
 
