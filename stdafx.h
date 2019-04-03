@@ -7,8 +7,7 @@
 #include <stdio.h>
 #include <ctime>
 #include <limits>
-#include "assignmentDate.h"
-#include "assignmentType.h"
+
 
 using namespace std;
 const int SizeArray = 10;

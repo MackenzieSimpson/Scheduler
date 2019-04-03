@@ -85,7 +85,7 @@ double assignmentDate::dateToSeconds(int monthVal, int dayVal, int yearVal)
 }
 void assignmentDate::inputDates()
 {
-	cout << "enter workout month, day and year.\n";
+	cout << "enter month, day and year.\n";
 	cin >> monthVal;
 
 	if (cin.fail())

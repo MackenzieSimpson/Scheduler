@@ -7,9 +7,8 @@
 
 #include "assignmentDate.h"
 #include "stdafx.h"
-#include "assignmentDate.cpp"
 #include "assignmentType.h"
-#include "assignmentType.cpp"
+
 
 
 
