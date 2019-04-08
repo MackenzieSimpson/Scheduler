@@ -30,7 +30,18 @@ void listPrint(string ProfessorName[], int SizeArray);
 //				SizeArray is the array size.
 //Postcondition: The values of the three arrays will be output to console seperated by tabs in index order.
 
-
+struct ProfessorInfo 
+{
+	char ProfName[25];
+	char CourseName[10];
+	char AssignmentName[20];
+	char Department[15];
+};
+struct StudentInfo
+{
+	char StudentName[30];
+	char Major[20];
+};
 
 int main()
 
@@ -71,8 +82,21 @@ int main()
 				// Professor inputs his/her name, name of the assignment, and date of the assignment.//
 				/*cout << "Enter Professor's Index. \n";
 				listPrint(ProfessorName, NumberProfessors);*/
+				
+				struct ProfessorInfo Prof;
+				cout << "Please enter Professor Name.\n";
+				cin >> Prof.ProfName;
+				cout << "Please enter Course Name.\n";
+				cin >> Prof.CourseName;
+				cout << "Please enter Assignment Name.\n";
+				cin >> Prof.AssignmentName;
+				cout << "Please enter Department.\n";
+				cin >> Prof.Department;
 
-				cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
+
+				  
+
+				/*cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
 				getline(cin, Professor);
 
 				getline(cin, Assignment);
@@ -82,7 +106,7 @@ int main()
 
 
 				cout << "What date would you like " << Assignment << " to be on?\n"; //Echo Assignment Name//
-				cout << "Please enter the date in MM DD YYYY format.\n";
+				cout << "Please enter the date in MM DD YYYY format.\n"*/
 				//date format converter
 
 				date.inputDates();
