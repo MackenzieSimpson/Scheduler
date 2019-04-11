@@ -3,7 +3,7 @@
 // Email Address:	mcsimpson@my.milligan.edu
 // Assignment:		Term Project
 // Description:		Program to manage assignment dates
-// Last Changed:	April 04, 2019
+// Last Changed:	April 11, 2019
 
 #include "assignmentDate.h"
 #include "stdafx.h"
@@ -18,7 +18,7 @@
 
 
 assignmentDate date;
-
+assignmentType assignment;
 
 void listPrint(int monthValA[], int dayValA[], int yearValA[], int SizeArray);
 //Precondition: Three integer values are each stored in a seperate array. 
@@ -34,29 +34,22 @@ struct ProfessorInfo
 {
 	char ProfName[25];
 	char CourseName[10];
-	char AssignmentName[20];
 	char Department[15];
 };
 struct StudentInfo
 {
 	char StudentName[30];
-	char Major[20];
+	char CourseName[10];
 };
 
 int main()
 
 {
 
-	int yearValA[] = { 2019, 2019, 2019, 2019, 2019 };
-	int monthValA[] = { 3,3,3,3,3 };
-	int dayValA[] = { 1,2,3,4,5 };
+	
 	double timeDifference;
 	double AssignmentDate;
-
-	//string date[SizeArray] = { {1, 3, 2019},{2, 3,2019},{3, 3, 2019},{4, 3, 2019},{5, 3, 2019} };//
 	string ProfessorName[SizeArray] = { "Dr. Giesey","Dr. Harrell", "Dr. Hampton", "Dr. Holbrook", "Dr. Bao" };
-	string AssignmentType[SizeArray] = { "Test", "Quiz", "Project", "Homework", "Lab" };
-	string AssignmentName[SizeArray];
 	string Professor;
 	string Assignment;
 	int choice;
@@ -80,37 +73,21 @@ int main()
 			case 1: {
 
 				// Professor inputs his/her name, name of the assignment, and date of the assignment.//
-				/*cout << "Enter Professor's Index. \n";
-				listPrint(ProfessorName, NumberProfessors);*/
+				cout << "Enter Professor's Index. \n";
+				listPrint(ProfessorName, SizeArray);
 				
 				struct ProfessorInfo Prof;
 				cout << "Please enter Professor Name.\n";
 				cin >> Prof.ProfName;
 				cout << "Please enter Course Name.\n";
 				cin >> Prof.CourseName;
-				cout << "Please enter Assignment Name.\n";
-				cin >> Prof.AssignmentName;
 				cout << "Please enter Department.\n";
 				cin >> Prof.Department;
 
-
-				  
-
-				/*cout << "Hello " << Professor << " what is the name of your next assignment?\n";// Echo Professor's Name//
-				getline(cin, Professor);
-
-				getline(cin, Assignment);
-
-
-
-
-
-				cout << "What date would you like " << Assignment << " to be on?\n"; //Echo Assignment Name//
-				cout << "Please enter the date in MM DD YYYY format.\n"*/
-				//date format converter
+				assignment.enterAssignment();
 
 				date.inputDates();
-				date.dateToSeconds(04, 02, 2019);
+				
 
 				cout << endl;
 
@@ -122,6 +99,11 @@ int main()
 
 			case 2:
 			{
+				struct StudentInfo Student;
+				cout << "Please enter student first and last name without spaces.\n";
+				cin >> Student.StudentName;
+				cout << "Please enter the course you wish to see assignment for.\n";
+				cin >> Student.CourseName;
 				date.outputDates();
 
 
@@ -149,27 +131,6 @@ int main()
 
 }
 
-
-
-
-
-
-
-
-
-
-void listPrint(int monthValA[], int dayValA[], int yearValA[], int SizeArray)
-{
-
-	for (int i = 0; i < SizeArray; i++)
-	{
-		cout << monthValA[i] << "\t \t" << dayValA[i] << "\t \t" << yearValA[i] << "\t \t" << endl;
-
-	}
-	cout << endl;
-	return;
-}
-
 void listPrint(string ProfessorName[], int SizeArray)
 {
 
@@ -181,10 +142,7 @@ void listPrint(string ProfessorName[], int SizeArray)
 	return;
 
 }
-/*void listPrint(string AssignmentType[], string AssignmentName[], int monthValA[], int dayValA[], int yearValA[], int SizeArray)
-{
-	for(int i=0; i < SizeArray; i++)
-}*/
+
 
 
 

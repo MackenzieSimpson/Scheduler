@@ -10,4 +10,4 @@
 
 
 using namespace std;
-const int SizeArray = 10;
+const int SizeArray = 5;
