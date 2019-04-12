@@ -3,7 +3,7 @@
 // Email Address:	mcsimpson@my.milligan.edu
 // Assignment:		Term Project
 // Description:		Program to manage assignment dates
-// Last Changed:	April 11, 2019
+// Last Changed:	April 12, 2019
 
 #include "assignmentDate.h"
 #include "stdafx.h"
@@ -22,7 +22,7 @@
 
 assignmentDate date;
 assignmentType assignment;
-assignmentProf c;
+assignmentProf prof(0,221);
 assignmentTest test;
 
 
@@ -71,9 +71,12 @@ int main()
 				
 				
 				
-				cout << "Default professor index is " << c.a << ".\n";
-				cout << "Default course number is " << c.b << ".\n";
-			
+				cout << "Default professor index is " << prof.a << ".\n";
+				cout << "Default course number is " << prof.b << ".\n";
+				
+				//Could also use constructor this way
+				//prof.enterProf(0, 221);
+				
 
 
 				assignment.enterAssignment();

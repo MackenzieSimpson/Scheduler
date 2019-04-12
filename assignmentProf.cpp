@@ -9,10 +9,10 @@
 assignmentProf::~assignmentProf()
 {
 }
-assignmentProf::assignmentProf()
+assignmentProf::assignmentProf(int a, int b)
 {
-	a= 0;
-	b= 221;
+	ProfVal = a;
+	CourseNumberVal=b;
 	
 }
 //Accessor functions//
@@ -39,11 +39,11 @@ int assignmentProf::setCourseNumberVal(int value)
 
 
 
-void assignmentProf::enterProf(int val1, int val2)
+void assignmentProf::enterProf(int a, int b)
 {
-	cout << "Please enter Professor Index.\n";
-	cin >> val1;
-	cout << "Please enter Course Number.\n";
-	cin >> val2;
+	cout << "Professor Index is "<<a<<  ".\n";
+	
+	cout << "Course Number is "<< b << ".\n";
+	
 	
 }

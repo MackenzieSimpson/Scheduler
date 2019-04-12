@@ -2,11 +2,12 @@
 class assignmentProf
 {
 public:
-	int a, b;
+	int a; 
+	int b;
 	
-	assignmentProf();
+	assignmentProf(int a, int b);
 	~assignmentProf();
-	void enterProf(int val1, int val2);
+	void enterProf(int a, int b);
 	//Accessor functions//
 	int getProfVal();
 	//Preconditions:  None 
