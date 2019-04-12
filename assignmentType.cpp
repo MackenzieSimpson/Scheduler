@@ -38,7 +38,7 @@ void assignmentType::enterAssignment()
 {
 	cout << "Enter the name of the Assignment.\n";
 	cin >> AssignmentVal;
-	cout << "What type of assignment is this?. Please put either Test, Homework, or Project.\n";
+	cout << "What type of assignment is this?.Please put either Test, Homework, or Project.\n";
 	cin >> AssignmentTypeVal;
 	
 }

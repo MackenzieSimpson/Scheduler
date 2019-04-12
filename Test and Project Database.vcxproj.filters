@@ -27,6 +27,12 @@
     <ClInclude Include="assignmentType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="assignmentProf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="assignmentTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test and Project Database.cpp">
@@ -39,6 +45,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="assignmentType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="assignmentProf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="assignmentTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

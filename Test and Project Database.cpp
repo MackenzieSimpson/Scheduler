@@ -8,6 +8,9 @@
 #include "assignmentDate.h"
 #include "stdafx.h"
 #include "assignmentType.h"
+#include "assignmentProf.h"
+#include "assignmentTest.h"
+
 
 
 
@@ -19,23 +22,15 @@
 
 assignmentDate date;
 assignmentType assignment;
+assignmentProf c;
+assignmentTest test;
 
-void listPrint(int monthValA[], int dayValA[], int yearValA[], int SizeArray);
-//Precondition: Three integer values are each stored in a seperate array. 
-//				SizeArray is the array size.
-//Postcondition: The values of the three arrays will be output to console seperated by tabs in order.
 
 void listPrint(string ProfessorName[], int SizeArray);
 //Precondition: String values are stored in an array.
 //				SizeArray is the array size.
 //Postcondition: The values of the three arrays will be output to console seperated by tabs in index order.
 
-struct ProfessorInfo 
-{
-	char ProfName[25];
-	char CourseName[10];
-	char Department[15];
-};
 struct StudentInfo
 {
 	char StudentName[30];
@@ -61,7 +56,8 @@ int main()
 	{
 		cout << "Choose 1 to input date and assignment. \n";
 		cout << "Choose 2 to look at assignment log.\n";
-		cout << "Choose 3 to exit the program.\n";
+		cout << "Choose 3 to look at Professor List.\n";
+		cout << "Choose 4 to exit the program.\n";
 		cout << "Enter your choice and press return.\n";
 		cin >> choice;
 
@@ -72,21 +68,23 @@ int main()
 			{
 			case 1: {
 
-				// Professor inputs his/her name, name of the assignment, and date of the assignment.//
-				cout << "Enter Professor's Index. \n";
-				listPrint(ProfessorName, SizeArray);
 				
-				struct ProfessorInfo Prof;
-				cout << "Please enter Professor Name.\n";
-				cin >> Prof.ProfName;
-				cout << "Please enter Course Name.\n";
-				cin >> Prof.CourseName;
-				cout << "Please enter Department.\n";
-				cin >> Prof.Department;
+				
+				
+				cout << "Default professor index is " << c.a << ".\n";
+				cout << "Default course number is " << c.b << ".\n";
+			
+
 
 				assignment.enterAssignment();
+				cout << endl;
+
+				test.enterTest();
+				cout << endl;
+
 
 				date.inputDates();
+			
 				
 
 				cout << endl;
@@ -111,6 +109,11 @@ int main()
 				break;
 			}
 			case 3:
+			{
+				listPrint(ProfessorName, SizeArray);
+				break;
+			}
+			case 4:
 			{ 
 			exit (0);
 			break;
@@ -120,8 +123,8 @@ int main()
 			}
 		}
 	}
-		while (choice >= 1 && choice <= 3);
-		if (choice != 1 || choice != 2 || choice != 3)
+		while (choice >= 1 && choice <= 4);
+		if (choice != 1 || choice != 2 || choice != 3|| choice!=4)
 
 		{
 			cout << "The choice entered is not an option on the menu, please exit the program and enter 1,2, or 3.\n";

@@ -5,6 +5,7 @@ public:
 	assignmentType();
 	~assignmentType();
 
+	
 	void enterAssignment();
 
 
