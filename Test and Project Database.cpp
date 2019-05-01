@@ -127,7 +127,7 @@ int main()
 			case 4:
 			{struct node
 			{
-				int data;
+				char data;
 				node *next;
 			};
 			class list
@@ -226,10 +226,10 @@ int main()
 			
 			{
 				list obj;
-				obj.createnode(25);
-				obj.createnode(50);
-				obj.createnode(90);
-				obj.createnode(40);
+				obj.createnode('Dr.D');
+				obj.createnode('Dr.B');
+				obj.createnode('Dr.G');
+				obj.createnode('Dr.H');
 				cout << "\n--------------------------------------------------\n";
 				cout << "---------------Displaying All nodes---------------";
 				cout << "\n--------------------------------------------------\n";
@@ -237,17 +237,17 @@ int main()
 				cout << "\n--------------------------------------------------\n";
 				cout << "-----------------Inserting At End-----------------";
 				cout << "\n--------------------------------------------------\n";
-				obj.createnode(55);
+				obj.createnode('Dr.A');
 				obj.display();
 				cout << "\n--------------------------------------------------\n";
 				cout << "----------------Inserting At Start----------------";
 				cout << "\n--------------------------------------------------\n";
-				obj.insert_start(50);
+				obj.insert_start('Dr.B');
 				obj.display();
 				cout << "\n--------------------------------------------------\n";
 				cout << "-------------Inserting At Particular--------------";
 				cout << "\n--------------------------------------------------\n";
-				obj.insert_position(5, 60);
+				obj.insert_position(5, 'Dr.C');
 				obj.display();
 				cout << "\n--------------------------------------------------\n";
 				cout << "----------------Deleting At Start-----------------";
@@ -280,7 +280,7 @@ int main()
 			}
 		}
 	}
-		while (choice >= 1 && choice <= 4);
+		while (choice >= 1 && choice <= 5);
 		if (choice != 1 || choice != 2 || choice != 3|| choice!=4 || choice!=5)
 
 		{
