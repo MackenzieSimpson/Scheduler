@@ -283,7 +283,7 @@ int main()
 					cout << "Unable to open file" << endl;
 					exit(1);
 				}
-				cout << "Enter word to search for: ";
+				cout << "Enter a day to search for, Please use D,M,YYYY format: ";
 				cin >> search;
 
 
@@ -294,12 +294,12 @@ int main()
 					pos = line.find(search); // search
 					if (pos != string::npos) // string::npos is returned if string is not found
 					{
-						cout << "Found!\n";
+						cout << "There is already an assignment listed on this date.\n";
 						break;
 					}
 					else
 					{
-						cout << "Not found\n";
+						cout << "There is not an assignment listed on this date.\n";
 						break;
 					}
 				}
