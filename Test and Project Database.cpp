@@ -60,7 +60,8 @@ int main()
 		cout << "Choose 2 to look at assignment log.\n";
 		cout << "Choose 3 to look at Professor List.\n";
 		cout << "Choose 4 to look at Link List.\n";
-		cout << "Choose 5 to exit the program.\n";
+		cout << "Choose 5 to search for a date.\n";
+		cout << "Choose 6 to exit the program.\n";
 		cout << "Enter your choice and press return.\n";
 		cin >> choice;
 
@@ -272,36 +273,37 @@ int main()
 			}
 			case 5:
 			{ 
-			{
-				ifstream myfile("datesdata.txt");
-				string line, monthVal, dayVal, yearVal;
-				cout << "Enter day: ";
-				cin >> dayVal;
-				cout << "Enter month: ";
-				cin >> monthVal;
-				cout << "Enter year: ";
-				cin >> yearVal;
-				//string search = monthVal + " " + dayVal + " " + yearVal;
-				//alternative:
-				string search = "";
-				search.append(yearVal);
-				search.append("/");
-				search.append(monthVal);
-				search.append("/");
-				search.append(dayVal);
-				bool found = false;
-				while (std::getline(myfile, line) && !found)
+				string search;
+				ifstream inFile;
+				string line;
+				inFile.open("dates2data.txt");
+
+				if (!inFile)
 				{
-					if (line.find(search) != string::npos)
+					cout << "Unable to open file" << endl;
+					exit(1);
+				}
+				cout << "Enter word to search for: ";
+				cin >> search;
+
+
+				size_t pos;
+				while (inFile.good())
+				{
+					getline(inFile, line); // get line from file
+					pos = line.find(search); // search
+					if (pos != string::npos) // string::npos is returned if string is not found
 					{
-						cout << line << endl;
-						found = true;
+						cout << "Found!\n";
+						break;
+					}
+					else
+					{
+						cout << "Not found\n";
+						break;
 					}
 				}
-				if (!found)
-					cout << "NOT FOUND";
-				
-			}
+			
 			break;
 
 
@@ -314,8 +316,8 @@ int main()
 			}
 		}
 	}
-		while (choice >= 1 && choice <= 5);
-		if (choice != 1 || choice != 2 || choice != 3|| choice!=4 || choice!=5)
+		while (choice >= 1 && choice <= 6);
+		if (choice != 1 || choice != 2 || choice != 3|| choice!=4 || choice!=5|| choice!=6)
 
 		{
 			cout << "The choice entered is not an option on the menu, please exit the program and enter 1,2, or 3.\n";

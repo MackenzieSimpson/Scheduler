@@ -129,7 +129,7 @@ void assignmentDate::inputDates()
 
 	cout << "you have selected " << monthVal << ", " << dayVal << ", " << yearVal << "\n";
 	ofstream mfile;
-	mfile.open("datesdata.txt", std::ofstream::app);
+	mfile.open("dates2data.txt", std::ofstream::app);
 	mfile << monthVal << "," << dayVal << "," << yearVal << endl;
 	mfile.close();
 }
@@ -137,7 +137,7 @@ void assignmentDate::outputDates()
 {
 	string line;
 	ifstream mfile;
-	mfile.open("datesdata.txt");
+	mfile.open("dates2data.txt");
 	getline(mfile, line);
 	cout << line << endl;
 
