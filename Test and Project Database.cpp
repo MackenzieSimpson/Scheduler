@@ -33,11 +33,7 @@ void listPrint(string ProfessorName[], int SizeArray);
 //				SizeArray is the array size.
 //Postcondition: The values of the three arrays will be output to console seperated by tabs in index order.
 
-struct StudentInfo
-{
-	char StudentName[30];
-	char CourseName[10];
-};
+
 
 int main()
 
@@ -56,10 +52,10 @@ int main()
 
 	do
 	{
-		cout << "Choose 1 to input date and assignment. \n";
+		cout << "Choose 1 to input date and assignment name. \n";
 		cout << "Choose 2 to look at assignment log.\n";
-		cout << "Choose 3 to look at Professor List.\n";
-		cout << "Choose 4 to look at Link List.\n";
+		cout << "Choose 3 to enter assignment importance.\n";
+		cout << "Choose 4 to look at Professor Names.\n";
 		cout << "Choose 5 to search for a date.\n";
 		cout << "Choose 6 to exit the program.\n";
 		cout << "Enter your choice and press return.\n";
@@ -75,11 +71,6 @@ int main()
 				
 				
 				
-				cout << "Default professor index is " << prof.a << ".\n";
-				cout << "Default course number is " << prof.b << ".\n";
-				
-				//Could also use constructor this way
-				//prof.enterProf(0, 221);
 				
 
 
@@ -104,11 +95,7 @@ int main()
 
 			case 2:
 			{
-				struct StudentInfo Student;
-				cout << "Please enter student first and last name without spaces.\n";
-				cin >> Student.StudentName;
-				cout << "Please enter the course you wish to see assignment for.\n";
-				cin >> Student.CourseName;
+				
 				date.outputDates();
 
 
@@ -117,8 +104,45 @@ int main()
 			}
 			case 3:
 			{
-				listPrint(ProfessorName, SizeArray);
 				
+				cout << " \n \n How many assignments do you want?";
+				int MaxAssignmentLimit;
+				cin >> MaxAssignmentLimit;
+
+				string *BestAssignmentArray; //creates the array
+				BestAssignmentArray = new string[MaxAssignmentLimit];//Note the use of "new" here, "new" just gives an initial size 
+
+
+				bool repeat = true;
+
+
+				while (repeat = true)
+				{
+					cout << "\n Name an Assignment. Or enter 'done' to end.";
+					string AssignmentName;
+					cin >> AssignmentName;
+					if (AssignmentName != "done")
+					{
+						cout << "\n What rank should this assignment have?";
+						int AssignmentRank;
+						cin >> AssignmentRank;
+						cout << "\n \n The best assignments are: \n";
+						BestAssignmentArray[AssignmentRank] = AssignmentName;
+
+
+						for (int AssignmentList = 1; AssignmentList <= MaxAssignmentLimit ; AssignmentList++)
+						{
+
+							cout << "\n" << AssignmentList << "\t" << BestAssignmentArray[AssignmentList-1];
+						}
+					}
+					if (AssignmentName == "done")
+					{
+						delete[] BestAssignmentArray; // This is our delete operator, it gets rid of the assignment array when we are done with it. It is very important, without it the computer's memory remains commited to the array
+
+						return(0);
+					}
+				}
 				
 			
 			
@@ -126,9 +150,12 @@ int main()
 				break;
 			}
 			case 4:
-			{struct node
+			
 			{
-				char data;
+				listPrint(ProfessorName, SizeArray);
+				struct node
+			{
+				int data;
 				node *next;
 			};
 			class list
@@ -227,10 +254,10 @@ int main()
 			
 			{
 				list obj;
-				obj.createnode('A');
-				obj.createnode('B');
-				obj.createnode('C');
-				obj.createnode(94);
+				obj.createnode(0);
+				obj.createnode(1);
+				obj.createnode(2);
+				obj.createnode(3);
 				cout << "\n--------------------------------------------------\n";
 				cout << "---------------Displaying All nodes---------------";
 				cout << "\n--------------------------------------------------\n";
@@ -238,17 +265,17 @@ int main()
 				cout << "\n--------------------------------------------------\n";
 				cout << "-----------------Inserting At End-----------------";
 				cout << "\n--------------------------------------------------\n";
-				obj.createnode('D');
+				obj.createnode(4);
 				obj.display();
 				cout << "\n--------------------------------------------------\n";
 				cout << "----------------Inserting At Start----------------";
 				cout << "\n--------------------------------------------------\n";
-				obj.insert_start('E');
+				obj.insert_start(5);
 				obj.display();
 				cout << "\n--------------------------------------------------\n";
 				cout << "-------------Inserting At Particular--------------";
 				cout << "\n--------------------------------------------------\n";
-				obj.insert_position(5, 'F');
+				obj.insert_position(5, 6);
 				obj.display();
 				cout << "\n--------------------------------------------------\n";
 				cout << "----------------Deleting At Start-----------------";

@@ -133,7 +133,19 @@ void assignmentDate::inputDates()
 	mfile << monthVal << "," << dayVal << "," << yearVal << endl;
 	mfile.close();
 	{
+		time_t current_time;
+		struct tm  local_time;
 
+		time(&current_time);
+		localtime_s(&local_time, &current_time);
+
+		int Year = local_time.tm_year + 1900;
+		int Month = local_time.tm_mon + 1;
+		int Day = local_time.tm_mday;
+
+		int Hour = local_time.tm_hour;
+		int Min = local_time.tm_min;
+		int Sec = local_time.tm_sec;
 		int difference;
 		int month, month2, day, day2, year, year2, jdate, jdate2, diff;
 		const int daysInYear[] = { 0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365 };
@@ -143,7 +155,7 @@ void assignmentDate::inputDates()
 
 		// You could do your calculations berfore you store the values and have just one.
 		jdate = (yearVal - 1900) * 365 + daysInYear[monthVal] + dayVal;
-		jdate2 = (second_date_year - 1900) * 365 + daysInYear[second_date_month] + second_date_days;
+		jdate2 = (Year- 1900) * 365 + daysInYear[Month] + Day;
 
 		difference = abs(jdate - jdate2);
 		cout << "The number of days between these dates is: " << difference << endl;
