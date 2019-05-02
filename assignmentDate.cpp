@@ -130,7 +130,7 @@ void assignmentDate::inputDates()
 	cout << "you have selected " << monthVal << ", " << dayVal << ", " << yearVal << "\n";
 	ofstream mfile;
 	mfile.open("datesdata.txt", std::ofstream::app);
-	mfile << monthVal << " " << dayVal << " " << yearVal << endl;
+	mfile << monthVal << "," << dayVal << "," << yearVal << endl;
 	mfile.close();
 }
 void assignmentDate::outputDates()
