@@ -226,10 +226,10 @@ int main()
 			
 			{
 				list obj;
-				obj.createnode('Dr.D');
-				obj.createnode('Dr.B');
-				obj.createnode('Dr.G');
-				obj.createnode('Dr.H');
+				obj.createnode('A');
+				obj.createnode('B');
+				obj.createnode('C');
+				obj.createnode(94);
 				cout << "\n--------------------------------------------------\n";
 				cout << "---------------Displaying All nodes---------------";
 				cout << "\n--------------------------------------------------\n";
@@ -237,17 +237,17 @@ int main()
 				cout << "\n--------------------------------------------------\n";
 				cout << "-----------------Inserting At End-----------------";
 				cout << "\n--------------------------------------------------\n";
-				obj.createnode('Dr.A');
+				obj.createnode('D');
 				obj.display();
 				cout << "\n--------------------------------------------------\n";
 				cout << "----------------Inserting At Start----------------";
 				cout << "\n--------------------------------------------------\n";
-				obj.insert_start('Dr.B');
+				obj.insert_start('E');
 				obj.display();
 				cout << "\n--------------------------------------------------\n";
 				cout << "-------------Inserting At Particular--------------";
 				cout << "\n--------------------------------------------------\n";
-				obj.insert_position(5, 'Dr.C');
+				obj.insert_position(5, 'F');
 				obj.display();
 				cout << "\n--------------------------------------------------\n";
 				cout << "----------------Deleting At Start-----------------";
@@ -272,11 +272,45 @@ int main()
 			}
 			case 5:
 			{ 
-			exit (0);
+			{
+				ifstream myfile("datesdata.txt");
+				string line, monthVal, dayVal, yearVal;
+				cout << "Enter day: ";
+				cin >> dayVal;
+				cout << "Enter month: ";
+				cin >> monthVal;
+				cout << "Enter year: ";
+				cin >> yearVal;
+				//string search = monthVal + " " + dayVal + " " + yearVal;
+				//alternative:
+				string search = "";
+				search.append(yearVal);
+				search.append("/");
+				search.append(monthVal);
+				search.append("/");
+				search.append(dayVal);
+				bool found = false;
+				while (std::getline(myfile, line) && !found)
+				{
+					if (line.find(search) != string::npos)
+					{
+						cout << line << endl;
+						found = true;
+					}
+				}
+				if (!found)
+					cout << "NOT FOUND";
+				
+			}
 			break;
 
 
 			}
+			case 6:
+			{
+				exit(0);
+			}
+			break;
 			}
 		}
 	}
@@ -301,6 +335,17 @@ void listPrint(string ProfessorName[], int SizeArray)
 	cout << endl;
 	return;
 
+}
+void listPrintDates(double dayArray[], int ArraySizeDay)
+{
+	for (int i = 0; i <= ArraySizeDay; i++)
+	{
+		if (dayArray[i] > 0)
+		{
+			cout << "you have an assignment on " << dayArray[i] << " of this month";
+		}
+	}
+	return;
 }
 
 

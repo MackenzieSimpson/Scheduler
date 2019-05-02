@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <ctime>
 #include <limits>
+#include <cstdlib>
 
 
 using namespace std;
