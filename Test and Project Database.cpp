@@ -23,7 +23,7 @@
 
 assignmentDate date;
 assignmentType assignment;
-assignmentProf prof(0,221);
+assignmentProf prof;
 assignmentTest test;
 
 
@@ -87,6 +87,10 @@ int main()
 
 				cout << "Here are the professor options.\n";
 				listPrint(ProfessorName, SizeArray);
+				cout << "Please enter professor last name.\n";
+				cin >> Professor;
+				
+
 				
 				
 
