@@ -9,6 +9,9 @@
 #include <limits>
 #include <cstdlib>
 # include <new>
+#include<conio.h>
+
+#include<stdlib.h>
 
 
 using namespace std;

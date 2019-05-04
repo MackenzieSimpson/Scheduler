@@ -27,12 +27,29 @@ assignmentProf prof(0,221);
 assignmentTest test;
 
 
-
+bool register_student(struct student *stud, struct list *ls);
+void addToList(struct student *stud, struct list *l);
+void showList(struct student *stud, struct list *l);
 void listPrint(string ProfessorName[], int SizeArray);
 //Precondition: String values are stored in an array.
 //				SizeArray is the array size.
 //Postcondition: The values of the three arrays will be output to console seperated by tabs in index order.
+struct student
+{
+	char name[20];
+	int choice;
+	student *next;
+	
 
+};
+
+struct list
+{
+	char name[20];
+	int choice;
+	list *next;
+
+};
 
 
 int main()
@@ -55,7 +72,7 @@ int main()
 		cout << "Choose 1 to input date and assignment name. \n";
 		cout << "Choose 2 to look at assignment log.\n";
 		cout << "Choose 3 to enter assignment importance.\n";
-		cout << "Choose 4 to look at Professor Names.\n";
+		cout << "Choose 4 to enter or look at students.\n";
 		cout << "Choose 5 to search for a date.\n";
 		cout << "Choose 6 to exit the program.\n";
 		cout << "Enter your choice and press return.\n";
@@ -68,8 +85,8 @@ int main()
 			{
 			case 1: {
 
-				
-				
+				cout << "Here are the professor options.\n";
+				listPrint(ProfessorName, SizeArray);
 				
 				
 
@@ -97,7 +114,16 @@ int main()
 			{
 				
 				date.outputDates();
+				
 
+				
+
+
+				
+				
+
+				
+				
 
 				
 				break;
@@ -127,7 +153,7 @@ int main()
 						int AssignmentRank;
 						cin >> AssignmentRank;
 						cout << "\n \n The best assignments are: \n";
-						BestAssignmentArray[AssignmentRank] = AssignmentName;
+						BestAssignmentArray[AssignmentRank-1] = AssignmentName;
 
 
 						for (int AssignmentList = 1; AssignmentList <= MaxAssignmentLimit ; AssignmentList++)
@@ -152,183 +178,60 @@ int main()
 			case 4:
 			
 			{
-				listPrint(ProfessorName, SizeArray);
-				struct node
-			{
-				int data;
-				node *next;
-			};
-			class list
-			{
-			private:
-				node *head, *tail;
-			public:
-				list()
 				{
-					head = NULL;
-					tail = NULL;
-				}
-				void createnode(int value)
-				{
-					node *temp = new node;
-					temp->data = value;
-					temp->next = NULL;
-					if (head == NULL)
+					student *s;		//--> creates an object of student...
+					s = (struct student *) malloc(sizeof(struct student));
+
+					struct list *ls;
+					ls = (struct list *) malloc(sizeof(struct list));
+					strcpy(ls->name, "");
+					ls->choice = 0;
+					ls->next = NULL;
+					do
 					{
-						head = temp;
-						tail = temp;
-						temp = NULL;
-					}
-					else
-					{
-						tail->next = temp;
-						tail = temp;
-					}
+						cout << "Write 1 to register a new student\n";
+						cout << "Write 2 to display lists of students registered\n";
+						cout << "Write 3 to quit\n";
+
+						int input;
+						cin >> input;
+						if (input == 1)
+						{
+							register_student(s, ls);
+
+						}
+						else if (input == 2)
+						{
+							showList(s, ls);
+						}
+						else if (input == 3)
+							exit(0);
+						cout << "\n";
+					} while (1);
+
+					getch();
 				}
-				void display()
-				{
-					node *temp = new node;
-					temp = head;
-					while (temp != NULL)
-					{
-						cout << temp->data << "\t";
-						temp = temp->next;
-					}
-				}
-				void insert_start(int value)
-				{
-					node *temp = new node;
-					temp->data = value;
-					temp->next = head;
-					head = temp;
-				}
-				void insert_position(int pos, int value)
-				{
-					node *pre = new node;
-					node *cur = new node;
-					node *temp = new node;
-					cur = head;
-					for (int i = 1; i < pos; i++)
-					{
-						pre = cur;
-						cur = cur->next;
-					}
-					temp->data = value;
-					pre->next = temp;
-					temp->next = cur;
-				}
-				void delete_first()
-				{
-					node *temp = new node;
-					temp = head;
-					head = head->next;
-					delete temp;
-				}
-				void delete_last()
-				{
-					node *current = new node;
-					node *previous = new node;
-					current = head;
-					while (current->next != NULL)
-					{
-						previous = current;
-						current = current->next;
-					}
-					tail = previous;
-					previous->next = NULL;
-					delete current;
-				}
-				void delete_position(int pos)
-				{
-					node *current = new node;
-					node *previous = new node;
-					current = head;
-					for (int i = 1; i < pos; i++)
-					{
-						previous = current;
-						current = current->next;
-					}
-					previous->next = current->next;
-				}
-			};
-			
-			{
-				list obj;
-				obj.createnode(0);
-				obj.createnode(1);
-				obj.createnode(2);
-				obj.createnode(3);
-				cout << "\n--------------------------------------------------\n";
-				cout << "---------------Displaying All nodes---------------";
-				cout << "\n--------------------------------------------------\n";
-				obj.display();
-				cout << "\n--------------------------------------------------\n";
-				cout << "-----------------Inserting At End-----------------";
-				cout << "\n--------------------------------------------------\n";
-				obj.createnode(4);
-				obj.display();
-				cout << "\n--------------------------------------------------\n";
-				cout << "----------------Inserting At Start----------------";
-				cout << "\n--------------------------------------------------\n";
-				obj.insert_start(5);
-				obj.display();
-				cout << "\n--------------------------------------------------\n";
-				cout << "-------------Inserting At Particular--------------";
-				cout << "\n--------------------------------------------------\n";
-				obj.insert_position(5, 6);
-				obj.display();
-				cout << "\n--------------------------------------------------\n";
-				cout << "----------------Deleting At Start-----------------";
-				cout << "\n--------------------------------------------------\n";
-				obj.delete_first();
-				obj.display();
-				cout << "\n--------------------------------------------------\n";
-				cout << "-----------------Deleing At End-------------------";
-				cout << "\n--------------------------------------------------\n";
-				obj.delete_last();
-				obj.display();
-				cout << "\n--------------------------------------------------\n";
-				cout << "--------------Deleting At Particular--------------";
-				cout << "\n--------------------------------------------------\n";
-				obj.delete_position(4);
-				obj.display();
-				cout << "\n--------------------------------------------------\n";
-				system("pause");
-				return 0;
-			}
+				
 				break;
 			}
 			case 5:
 			{ 
 				string search;
-				ifstream inFile;
-				string line;
-				inFile.open("dates2data.txt");
-
-				if (!inFile)
-				{
-					cout << "Unable to open file" << endl;
-					exit(1);
-				}
-				cout << "Enter a day to search for, Please use D,M,YYYY format: ";
+				ifstream FileSearch;
+				cout << "enter search word ";
 				cin >> search;
-
-
-				size_t pos;
-				while (inFile.good())
+				"\n";
+				FileSearch.open("dates2data.txt");
+				if (FileSearch.is_open())
 				{
-					getline(inFile, line); // get line from file
-					pos = line.find(search); // search
-					if (pos != string::npos) // string::npos is returned if string is not found
+					string text;
+					while (getline(FileSearch, text))
 					{
-						cout << "There is already an assignment listed on this date.\n";
-						break;
+						if (text.find(search) != string::npos) {
+							cout << "There is already an assignment listed on this date.\n";
+						}
 					}
-					else
-					{
-						cout << "There is not an assignment listed on this date.\n";
-						break;
-					}
+
 				}
 			
 			break;
@@ -336,8 +239,10 @@ int main()
 
 			}
 			case 6:
-			{
+			{ 
 				exit(0);
+			
+			
 			}
 			break;
 			}
@@ -365,18 +270,80 @@ void listPrint(string ProfessorName[], int SizeArray)
 	return;
 
 }
-void listPrintDates(double dayArray[], int ArraySizeDay)
-{
-	for (int i = 0; i <= ArraySizeDay; i++)
-	{
-		if (dayArray[i] > 0)
-		{
-			cout << "you have an assignment on " << dayArray[i] << " of this month";
-		}
-	}
-	return;
-}
+bool register_student(struct student *stud, struct list *ls)
+				{
+					student *s = stud;
+					cout << "Write name of student\n";
+					cin >> s->name;
+					cout << "Enter 1 for electrical or 2 for mechanical\n";
+					cin >> s->choice;
 
+
+
+
+					if (s->choice == 1)
+					{
+						cout << "Student registered in Electrical\n";
+						addToList(s, ls);
+						return true;
+					}
+					else if (s->choice == 2)
+					{
+						cout << "Student registered in Mechanical\n";
+						addToList(s, ls);
+						return true;
+					}
+
+					else
+					{
+						cout << "undecided\n.";
+						return false;
+					}
+
+
+
+				}
+
+
+
+
+				void addToList(struct student *stud, struct list *l)
+				{
+					list *pointer = l;
+					while (pointer->next != NULL)
+					{
+						pointer = pointer->next;
+					}
+					pointer->next = (struct list *) malloc(sizeof(struct list));
+					pointer = pointer->next;
+					strcpy(pointer->name, stud->name);
+
+					pointer->next = NULL;
+
+
+				}
+
+				void showList(struct student *stud, struct list *l)
+				{
+					list *pointer = l;
+					if (pointer->next == NULL)
+						cout << "No student registered yet!\n";
+					else
+					{
+						cout << "Students statistics are: \n";
+						while (pointer->next != NULL)
+						{
+							pointer = pointer->next;
+							cout << "Name of student is: " << pointer->name << "\n";
+							cout << "EENG or MENG: ";
+							if (pointer->choice = 1)
+								cout << "Student is Electrical\n";
+							else
+								cout << "Student is Mechanical\n";
+
+						}
+					}
+				}
 
 
 

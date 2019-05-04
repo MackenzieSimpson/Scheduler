@@ -147,7 +147,7 @@ void assignmentDate::inputDates()
 		int Min = local_time.tm_min;
 		int Sec = local_time.tm_sec;
 		int difference;
-		int month, month2, day, day2, year, year2, jdate, jdate2, diff;
+		int jdate, jdate2;
 		const int daysInYear[] = { 0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365 };
 		const int daysInLeapYear[] = { 0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366 };
 		const int daysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -165,12 +165,14 @@ void assignmentDate::inputDates()
 }
 void assignmentDate::outputDates()
 {
-	string line;
+	string text;
 	ifstream mfile;
 	mfile.open("dates2data.txt");
-	getline(mfile, line);
-	cout << line << endl;
-
+	while (!mfile.eof())
+	{
+		getline(mfile, text);
+		cout << text << endl;
+	}
 	mfile.close();
 
 }
