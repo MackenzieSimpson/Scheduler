@@ -3,7 +3,7 @@
 // Email Address:	mcsimpson@my.milligan.edu
 // Assignment:		Term Project
 // Description:		Program to manage assignment dates
-// Last Changed:	April 30, 2019
+// Last Changed:	May 9, 2019
 
 #include "assignmentDate.h"
 #include "stdafx.h"
