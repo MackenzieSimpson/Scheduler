@@ -57,8 +57,7 @@ int main()
 {
 
 	
-	double timeDifference;
-	double AssignmentDate;
+	
 	string ProfessorName[SizeArray] = { "Dr. Giesey","Dr. Harrell", "Dr. Hampton", "Dr. Holbrook", "Dr. Bao" };
 	string Professor;
 	string Assignment;
@@ -83,7 +82,8 @@ int main()
 			switch (choice)
 
 			{
-			case 1: {
+			case 1: 
+			{
 
 				cout << "Here are the professor options.\n";
 				listPrint(ProfessorName, SizeArray);
@@ -103,7 +103,7 @@ int main()
 
 
 				date.inputDates();
-			
+				date.dateToSeconds(5,9,2019);
 				
 
 				cout << endl;
@@ -222,7 +222,7 @@ int main()
 			{ 
 				string search;
 				ifstream FileSearch;
-				cout << "enter search word ";
+				cout << "enter search date ";
 				cin >> search;
 				"\n";
 				FileSearch.open("dates2data.txt");
@@ -256,7 +256,7 @@ int main()
 		if (choice != 1 || choice != 2 || choice != 3|| choice!=4 || choice!=5|| choice!=6)
 
 		{
-			cout << "The choice entered is not an option on the menu, please exit the program and enter 1,2, or 3.\n";
+			cout << "The choice entered is not an option on the menu, please exit the program and enter 1,2,3, 4,5, or 6.\n";
 
 		}
 
@@ -340,7 +340,7 @@ bool register_student(struct student *stud, struct list *ls)
 							pointer = pointer->next;
 							cout << "Name of student is: " << pointer->name << "\n";
 							cout << "EENG or MENG: ";
-							if (pointer->choice = 1)
+							if (pointer->choice == 1)
 								cout << "Student is Electrical\n";
 							else
 								cout << "Student is Mechanical\n";
